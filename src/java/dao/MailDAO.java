@@ -122,7 +122,7 @@ public class MailDAO {
     }
     
     public static void main(String args[]){
-        MailDAO md = new MailDAO("nguyenvanquy.woodworkshop@gmail.com", "nguyenvanquy");
-        System.out.println(md.sendToPerson("@", "k", "xxx"));
+        MailDAO md = new MailDAO("woodshop.online@gmail.com", "woodshop123");
+        System.out.println(md.sendToPerson("woodshop.online@gmail.com", "test", "xasdxx"));
     }
 }

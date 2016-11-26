@@ -3,14 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/5.%20Web/WebProj/src/java/controller/UserServlet.java</file>
-            <file>file:/E:/5.%20Web/WebProj/src/java/controller/WishListServlet.java</file>
-            <file>file:/E:/5.%20Web/WebProj/web/Product/view.jsp</file>
-            <file>file:/E:/5.%20Web/WebProj/web/User/register.jsp</file>
-            <file>file:/E:/5.%20Web/WebProj/src/java/shoppingcart/ShoppingServlet.java</file>
-            <file>file:/E:/5.%20Web/WebProj/web/StoreInfor/contact.jsp</file>
-            <file>file:/E:/5.%20Web/WebProj/web/index.jsp</file>
-            <file>file:/E:/5.%20Web/WebProj/web/Transaction/shoppingcart.jsp</file>
+            <file>file:/D:/International%20University/Software%20Project%20Management/WebProj/web/Product/view.jsp</file>
+            <file>file:/D:/International%20University/Software%20Project%20Management/WebProj/src/java/controller/MailServlet.java</file>
+            <file>file:/D:/International%20University/Software%20Project%20Management/WebProj/web/index.jsp</file>
+            <file>file:/D:/International%20University/Software%20Project%20Management/WebProj/web/User/register.jsp</file>
         </group>
     </open-files>
 </project-private>

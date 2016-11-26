@@ -120,6 +120,10 @@
                 </div>
             </div>
         </div>
+        <%@ page import="net.tanesha.recaptcha.ReCaptcha"%>
+        <%@ page import="net.tanesha.recaptcha.ReCaptchaFactory"%>        
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        
         <div class="main">
             <div class="container">
                 <div class="register">
@@ -307,9 +311,13 @@
                                 <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>Đăng ký để nhận thông tin từ chúng tôi</label>
                             </a><br>
                             <div class='clearfix'></div>
-                            <div class="register-but">
+<!--                        <div class="register-but">
                                 <input type="submit" value="Đăng ký" style="background-color: #31C2DB; padding: 12px 25px; font-size: 22px; box-shadow: none; border-radius: 5px; display: inline-block; line-height: 1.5">
-                            </div>
+                            </div>-->
+                            
+                            <div class="g-recaptcha" data-sitekey="6LewuwwUAAAAAKvnR3GcLNj7D9dCOrSKsu9NByaO"></div>
+                                <br/>
+                                <input type="submit" value="Đăng ký" style="background-color: #31C2DB; padding: 12px 25px; font-size: 22px; box-shadow: none; border-radius: 5px; display: inline-block; line-height: 1.5">
                             <div class="clearfix"> </div>
                         </div>
                     </form>
@@ -390,20 +398,13 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="container">
-            <div class="instagram text-center">
-                <h3>Đối Tác Của Chúng Tôi</h3>
-            </div>
-            <div class="brands">
-                <ul class="brand_icons">
-                    <li><img src='images/icon1.png' class="img-responsive" alt=""/></li>
-                    <li><img src='images/icon2.png' class="img-responsive" alt=""/></li>
-                    <li><img src='images/icon3.png' class="img-responsive" alt=""/></li>
-                    <li><img src='images/icon4.png' class="img-responsive" alt=""/></li>
-                    <li class="last"><img src='images/icon5.png' class="img-responsive" alt=""/></li>
-                </ul>
-            </div>
-        </div> -->
+        
+        <form action="?" method="POST">
+            
+         </form>
+        
+        
+        
         <div class="container">
             <!-- <div class="instagram_top">
                 <div class="instagram text-center">

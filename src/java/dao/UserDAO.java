@@ -91,6 +91,18 @@ public class UserDAO {
         }
         return temp;
     }
+    
+    public String getPasswordOneUserByEmail(String email) throws SQLException, ClassNotFoundException {
+        User temp = new User();
+        //String query = "select * from user where email = "+email;
+        PreparedStatement pstmt = conn.prepareStatement("select password from user where email = ?");
+        pstmt.setString(1, email);
+        ResultSet rs = pstmt.executeQuery();
+        
+        if(!rs.next()) return null;
+        else return rs.getString("password");
+        
+    }
 
     public List<String> getAllEmail() throws SQLException, ClassNotFoundException {
         List<String> email = new ArrayList<String>();

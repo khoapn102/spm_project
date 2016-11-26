@@ -48,23 +48,23 @@
                     <div class="logo">
                         <a href="index.jsp"><h6>Xưởng Mộc</h6><h2>Nguyễn Văn Quý</h2></a>
                     </div>
-<!--                    <div class="header_right">
-                        <ul class="social">
-                            <li><a href="#"> <i class="fb"> </i> </a></li>
-                            <li><a href="#"><i class="tw"> </i> </a></li>
-                            <li><a href="#"><i class="utube"> </i> </a></li>
-                            <li><a href="#"><i class="pin"> </i> </a></li>
-                            <li><a href="#"><i class="instagram"> </i> </a></li>
-                        </ul>
-                        <div class="lang_list">
-                            <select tabindex="4" class="dropdown">
-                                <option value="" class="label" value="">VI</option>
-                                <option value="1">VI</option>
-                                <option value="2">EN</option>
-                            </select>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>-->
+                    <!--                    <div class="header_right">
+                                            <ul class="social">
+                                                <li><a href="#"> <i class="fb"> </i> </a></li>
+                                                <li><a href="#"><i class="tw"> </i> </a></li>
+                                                <li><a href="#"><i class="utube"> </i> </a></li>
+                                                <li><a href="#"><i class="pin"> </i> </a></li>
+                                                <li><a href="#"><i class="instagram"> </i> </a></li>
+                                            </ul>
+                                            <div class="lang_list">
+                                                <select tabindex="4" class="dropdown">
+                                                    <option value="" class="label" value="">VI</option>
+                                                    <option value="1">VI</option>
+                                                    <option value="2">EN</option>
+                                                </select>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>-->
                     <div class="clearfix"></div>
                 </div>  
                 <div class="banner_wrap">
@@ -122,12 +122,17 @@
                                     <option>5.000.000 - 8.000.000</option>
                                     <option>Hơn 8.000.000</option>
                                 </select>
+
                                 <input type="submit" value="Tìm">
                                 <br><br>
                             </form>
                         </div>
                         <div class="welcome_box">
+                            <% if (user_t == null) {%>
                             <h3>Chào bạn,</h3>
+                            <%} else {%>
+                            <h3>Chào <%=user_t.getFirst_name()%>,</h3>
+                            <%}%>
                             <p>Chúc bạn có những khoảng thời gian mua sắm vui vẻ và tìm được những sản phẩm mà bạn mong muốn</p>
                         </div>
                     </div>
@@ -149,9 +154,9 @@
                                                             <a href="#"><h3 class="menu_head" style="font-size: 18px" id="menubtn"><img src="icons/menu.png"><b>&nbsp;&nbsp;DANH MỤC</b></h3></a>
                                                             <ul class="nav" id="menu">
                                                                 <li><a href="StoreInfor/about.jsp"><img src="icons/user.png"><b>&nbsp;&nbsp;GIỚI THIỆU VỀ CHÚNG TÔI</b></a></li>
-                                                                <%if (user_t != null && user_t.getIsManager() == 0) {%>
-                                                                    <li><a href="Product/compare.jsp"><img src="icons/compare.png"><b>&nbsp;&nbsp;BẤM ĐỂ SO SÁNH NGAY</b></a></li>
-                                                                <%}%>
+                                                                        <%if (user_t != null && user_t.getIsManager() == 0) {%>
+                                                                <li><a href="Product/compare.jsp"><img src="icons/compare.png"><b>&nbsp;&nbsp;BẤM ĐỂ SO SÁNH NGAY</b></a></li>
+                                                                        <%}%>
                                                                 <li><a href="Product/viewCate.jsp?cid=liv"><img src="icons/living.png"><b>&nbsp;&nbsp;PHÒNG KHÁCH</b></a></li>
                                                                 <li><a href="Product/viewCate.jsp?cid=bed"><img src="icons/bed.png"><b>&nbsp;&nbsp;PHÒNG NGỦ</b></a></li>
                                                                 <li><a href="Product/viewCate.jsp?cid=kit"><img src="icons/dining.png"><b>&nbsp;&nbsp;NHÀ BẾP</b></a></li>
@@ -160,18 +165,18 @@
                                                                 <li><a href="StoreInfor/contact.jsp"><img src="icons/contact.png"><b>&nbsp;&nbsp;LIÊN HỆ</b></a></li>
                                                             </ul>
                                                         </div>
-                                                                
-                                                                <script type="text/javascript">
-                                                    $('#menubtn').click(function (e) {
-                                                        if ($('#menu').is(":visible")) {
-                                                            $('#menu').hide("slow");
-                                                        } else {
-                                                            $('#menu').show("slow");
-                                                        }
-                                                        e.preventDefault();
-                                                    });
-                                                </script>
-                                                                
+
+                                                        <script type="text/javascript">
+                                                            $('#menubtn').click(function (e) {
+                                                                if ($('#menu').is(":visible")) {
+                                                                    $('#menu').hide("slow");
+                                                                } else {
+                                                                    $('#menu').show("slow");
+                                                                }
+                                                                e.preventDefault();
+                                                            });
+                                                        </script>
+
                                                         <div class="tags">
                                                             <h4 class="tag_head">Thẻ Tìm Kiếm Nhanh</h4>
                                                             <ul class="tags_links">
@@ -212,7 +217,7 @@
                                                                             + "<div class=\"cart-left\">\n"
                                                                             + "<p class=\"title\">" + productList.get(i).getPname() + "</p>\n"
                                                                             + "</div>\n"
-                                                                            + "<span class=\"amount item_price\" style=\"font-size: 14px\">" + productList.get(i).getPrice() + " VND</span>\n"
+                                                                            + "<span class=\"amount item_price\">" + productList.get(i).getPrice() + " VND</span>\n"
                                                                             + "<div class=\"clearfix\"></div>\n"
                                                                             + "</div>\n"
                                                                             + "</div>\n"
@@ -233,7 +238,7 @@
                                                                             + "<div class=\"cart-left\">\n"
                                                                             + "<p class=\"title\">" + productList.get(i).getPname() + "</p>\n"
                                                                             + "</div>\n"
-                                                                            + "<span class=\"amount item_price\" style=\"font-size: 14px\">" + productList.get(i).getPrice() + " VND</span>\n"
+                                                                            + "<span class=\"amount item_price\">" + productList.get(i).getPrice() + " VND</span>\n"
                                                                             + "<div class=\"clearfix\"></div>\n"
                                                                             + "</div>\n"
                                                                             + "</div>\n"
@@ -354,10 +359,10 @@
                                                 <p class="footer_desc">Chúng tôi sẽ cập nhật thông tin sản phẩm mới nhất và các chương trình khuyến mãi nhanh chóng và kịp thời đến bạn</p>
                                                 <div class="search_footer">
                                                     <form method="post" action="../WebProj/SubscriberServlet?action=add">
-                                                    <input type="text" class="text" value="Email" name="email" onfocus="this.value = '';" onblur="if (this.value == '') {
-                                                                this.value = 'Email';
-                                                            }">
-                                                    <input type="submit" value="Đăng Ký">
+                                                        <input type="text" class="text" value="Email" name="email" onfocus="this.value = '';" onblur="if (this.value == '') {
+                                                                    this.value = 'Email';
+                                                                }">
+                                                        <input type="submit" value="Đăng Ký">
                                                     </form>
                                                 </div>
                                                 <img src="images/payment.png" class="img-responsive" alt=""/>

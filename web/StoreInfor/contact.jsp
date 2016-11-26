@@ -48,7 +48,7 @@
             if (user_t != null && user_t.getIsManager() == 1) {
                 out.write("<script type='text/javascript'>\n");
                 out.write("alert('You must login as customer!!!');\n");
-                String url = "index.jsp";
+                String url = "../index.jsp";
                 out.write("window.location.href='" + url + "';");
                 out.write("</script>\n");
 //                response.sendRedirect("../User/login.jsp");
@@ -217,9 +217,9 @@
                                             </p>
                                             <script>
                                                 var emailKHBox = document.getElementById("emailKH");
-                                                var pattern = new RegExp(/[~`!#$%\^&*+=\-\[\]\\';/{}|\\":<>\?]/);
+                                                var email_pattern = new RegExp(/[~`!#$%\^&*+=\-\[\]\\';/{}|\\":<>\?]/);
                                                 function isValidemailKHBox() {
-                                                    if (pattern.test(emailKHBox.value)) {
+                                                    if (email_pattern.test(emailKHBox.value)) {
                                                         emailKHBox.setCustomValidity('Vui lòng không nhập ký tự đặc biệt!');
                                                     } else {
                                                         emailKHBox.setCustomValidity('');
