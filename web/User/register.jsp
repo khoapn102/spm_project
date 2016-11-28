@@ -14,6 +14,7 @@
         <link href="../css/style.css" rel='stylesheet' type='text/css' />
         <script src="../js/jquery.easydropdown.js"></script>
         <script src="../js/jquery.magnific-popup.js" type="text/javascript"></script>
+        <script type="text/javascript" src="../js/backtotop.js"></script>
         <link href="../css/magnific-popup.css" rel="stylesheet" type="text/css">
 
         <script>
@@ -426,6 +427,8 @@
                   </div>
                 </ul>
             </div> -->
+            
+            
             <div class="instagram_top">
                 <div class="instagram text-center">
                     <h3>Kết Nối Với Chúng Tôi</h3>
@@ -439,6 +442,7 @@
             </div>
         </div>
     </div>
+    
     <div class="footer">
         <div class="container">
             <div class="footer-grid">
@@ -494,5 +498,6 @@
             </div>
         </div>
     </div>
+    <p><a href="#" class="back-to-top">Back to Top</a></p>
 </body>
 </html>		

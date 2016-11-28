@@ -85,9 +85,8 @@ public class MailServlet extends HttpServlet {
                     + "</body>\n"
                     + "</html>\n";
 
-//            md = new MailDAO("lh.nguyenvanquy.woodworkshop@gmail.com", "nguyenvanquy");
-            md = new MailDAO("woodshop.online@gmail.com", "woodshop123");
-            md.sendToPerson("woodshop.online@gmail.com", "[Liên Hệ]", content);
+            md = new MailDAO("woodonline.store@gmail.com", "woodshop123");
+            md.sendToPerson("woodonline.store@gmail.com", "[Liên Hệ]", content);
             //md.sendToPerson("nguyenvanquy.woodworkshop@gmail.com", "[Liên Hệ]", "Từ: " + request.getParameter("email") + "<br/>" + request.getParameter("message"));
 
             response.sendRedirect("mailStatus.jsp?status=success");
@@ -128,7 +127,7 @@ public class MailServlet extends HttpServlet {
                         + "</body>"
                         + "</html>\n";
 
-                md = new MailDAO("woodshop.online@gmail.com", "woodshop123");
+                md = new MailDAO("woodonline.store@gmail.com", "woodshop123");
                 md.sendToPerson(email_t, "[Nhắc mật khẩu]", content);
                 //md.sendToPerson("nguyenvanquy.woodworkshop@gmail.com", "[Liên Hệ]", "Từ: " + request.getParameter("email") + "<br/>" + request.getParameter("message"));
 
