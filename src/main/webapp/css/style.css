@@ -1,8 +1,5 @@
 /*
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
+
 */
 h4, h5, h6,
 h1, h2, h3 {margin: 0;}
@@ -176,6 +173,23 @@ a.item_1 {
     border-bottom-right-radius: 50%;
     border-top-left-radius: 50%;
     border-bottom-left-radius: 50%;
+}
+a.back-to-top {
+    display: none;
+    width: 60px;
+    height: 60px;
+    text-indent: -9999px;
+    position: fixed;
+    z-index: 999;
+    right: 20px;
+    bottom: 20px;
+    background: #27AE61 url("../images/up-arrow.png") no-repeat center 43%;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+}
+a:hover.back-to-top {
+    background-color: #000;
 }
 span.item_price {
     color: #000;
@@ -2950,3 +2964,5 @@ a.cpns {
         display: table-cell;
     }
 }
+
+

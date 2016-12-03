@@ -15,6 +15,7 @@
         <script src="../js/jquery.easydropdown.js"></script>
         <script src="../js/jquery.magnific-popup.js" type="text/javascript"></script>
         <link href="../css/magnific-popup.css" rel="stylesheet" type="text/css">
+        <script type="text/javascript" src="../js/backtotop.js"></script>
         <script>
             $(document).ready(function () {
                 $('.popup-with-zoom-anim').magnificPopup({
@@ -355,5 +356,6 @@
                 </div>
             </div>
         </div>
+        <p><a href="#" class="back-to-top">Back to Top</a></p>
     </body>
 </html>		

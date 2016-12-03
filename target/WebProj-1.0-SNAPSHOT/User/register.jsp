@@ -120,6 +120,39 @@
                 </div>
             </div>
         </div>
+        <%@ page import="net.tanesha.recaptcha.ReCaptcha"%>
+        <%@ page import="net.tanesha.recaptcha.ReCaptchaFactory"%>  
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+        <%
+            String _email1,_email2,_pass1,_pass2,_fname,_lname,_day,_month,_year,_phone,_addr,_image;
+            User regUser = (User) s.getAttribute("regUser");
+            if(regUser==null){
+                _email1 = _email2 = _pass1 = _pass2 = _fname = _lname = _phone = _addr = "";
+                _image = "image/user/itc1.jpg";
+                _day = " - Ngày - ";
+                _month = " - Tháng - ";
+                _year = " - Năm - ";
+            }else{
+                _email1 = regUser.getEmail();
+                _email2 = regUser.getEmail();
+                _pass1 = regUser.getPassword();
+                _pass2 = regUser.getPassword();
+                _fname = regUser.getFirst_name();
+                _lname = regUser.getLast_name();
+                
+                String _DOB[] = regUser.getDob().split("-");
+                
+                _day = _DOB[0];
+                _month = _DOB[1];
+                _year = _DOB[2];
+                
+                _phone = regUser.getPhone_number();
+                _addr = regUser.getAddress();
+                _image = "" + regUser.getImage_url();
+            }
+        %>
+        
         <div class="main">
             <div class="container">
                 <div class="register">
@@ -135,36 +168,37 @@
                             <h6><i>Vui lòng điền đầy đủ thông tin vào ô có dấu (*)</i></h6>
                             <div>
                                 <span>Địa chỉ Email<label>*</label></span>
-                                <input type="text" name="email" id="email" maxlength="35" required>
+                                <input type="text" name="email" id="email" maxlength="35" required value="<%=_email1%>" >
                             </div>
                             <div>
                                 <span>Nhập lại địa chỉ email<label>*</label></span>
-                                <input type="text" id="confirmemail" maxlength="35" required>
+                                <input type="text" id="confirmemail" maxlength="35" required value="<%=_email2%>" >
                             </div>
                             <div>
                                 <span>Mật khẩu<label>*</label></span>
-                                <input type="password" id="pass" name="password" maxlength="15" required>
+                                <input type="password" id="pass" name="password" maxlength="15" required value="<%=_pass1%>" >
                             </div>
                             <div>
                                 <span>Nhập lại mật khẩu<label>*</label></span>
-                                <input type="password" id="confirmpass" maxlength="15" required>
+                                <input type="password" id="confirmpass" maxlength="15" required  value="<%=_pass2%>" >
                             </div>
 
-                        </div>
+                        </div>    
+                        
                         <div class="register-bottom-grid">
                             <h3>Thông tin cá nhân</h3>
                             <div>
                                 <span>Họ<label>*</label></span>
-                                <input type="text" id="first" name="lastname" maxlength="25" required> 
+                                <input type="text" id="first" name="lastname" maxlength="25" required  value="<%=_lname%>" > 
                             </div>
                             <div>
                                 <span>Tên<label>*</label></span>
-                                <input type="text" id="last" name="firstname" maxlength="25" required> 
+                                <input type="text" id="last" name="firstname" maxlength="25" required value="<%=_fname%>" > 
                             </div>
                             <div>
                                 <span>Ngày - Tháng - Năm Sinh<label>*</label></span>
-                                <select name="date">
-                                    <option> - Ngày - </option>
+                                <select name="date" id="__date">
+                                    <option value=" - Ngày - "> - Ngày - </option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -198,8 +232,8 @@
                                     <option value="31">31</option>
                                 </select>
                                 &nbsp;
-                                <select name="month">
-                                    <option> - Tháng - </option>
+                                <select name="month" id="__month">
+                                    <option value=" - Tháng - "> - Tháng - </option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -214,8 +248,8 @@
                                     <option value="12">12</option>
                                 </select>
                                 &nbsp;
-                                <select name="year">
-                                    <option> - Năm - </option>
+                                <select name="year" id="__year">
+                                    <option value=" - Năm - "> - Năm - </option>
                                     <option value="1995">1995</option>
                                     <option value="1994">1994</option>
                                     <option value="1993">1993</option>
@@ -267,12 +301,12 @@
                             </div>
                             <div>
                                 <span>Số điện thoại<label>*</label></span>
-                                <input type="text" id="tel" name="tel" maxlength="12" required> 
+                                <input type="text" id="tel" name="tel" maxlength="12" required value="<%=_phone%>" > 
                             </div>
 
                             <div>
                                 <span>Địa chỉ nhà<label></label></span>
-                                <input name="address" id="addr" maxlength="50" type="text"> 
+                                <input name="address" id="addr" maxlength="50" type="text" value="<%=_addr%>" > 
                             </div>
                             <div>
                                 <span>Hình ảnh đại diện</span>
@@ -285,7 +319,7 @@
                                 <table>
                                     <tr>
                                         <td>
-                                            <select name="u_img" onchange="jsDropDown('userPic', this.value)">
+                                            <select name="u_img" onchange="jsDropDown('userPic', this.value)" id="__u_img">
                                                 <option value="image/user/itc1.jpg">ITC</option>
                                                 <option value="image/user/coffee.jpg">Coffee</option>
                                                 <option value="image/user/danger.jpg">Danger</option>
@@ -295,7 +329,7 @@
                                             </select>
                                         </td>
                                         <td>
-                                            &nbsp;&nbsp;&nbsp;<img src="../image/user/itc1.jpg" alt="No Image" id="userPic"/>
+                                            &nbsp;&nbsp;&nbsp;<img src="<%="../" + _image%>" alt="No Image" id="userPic"/>
                                         </td>
                                     </tr>
                                 </table>
@@ -306,15 +340,35 @@
                             <a class="news-letter" href="#">
                                 <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>Đăng ký để nhận thông tin từ chúng tôi</label>
                             </a><br>
-                            <div class='clearfix'></div>
+                            
+                            <div class='clearfix'></div>     
+                            
                             <div class="register-but">
+                                <div class="clearfix"> </div>                                
+                                <div class="g-recaptcha" data-sitekey="6LewuwwUAAAAAKvnR3GcLNj7D9dCOrSKsu9NByaO" align="left"></div>
+                                <div class="clearfix"> </div>       
                                 <input type="submit" value="Đăng ký" style="background-color: #31C2DB; padding: 12px 25px; font-size: 22px; box-shadow: none; border-radius: 5px; display: inline-block; line-height: 1.5">
-                            </div>
+                            </div>                            
                             <div class="clearfix"> </div>
                         </div>
                     </form>
                     <div class="clearfix"> </div>
+                    
+                    
                     <script type="text/javascript">
+                        function SelectElement(valueToSelect)
+                        {    
+                            var _Delement = document.getElementById('__date');
+                            var _Melement = document.getElementById('__month');
+                            var _Yelement = document.getElementById('__year');
+                            var _Ielement = document.getElementById('__u_img');
+                            _Delement.value = '<%=_day%>';
+                            _Melement.value = '<%=_month%>';
+                            _Yelement.value = '<%=_year%>';
+                            _Ielement.value = '<%=_image%>';
+                        }
+                    
+                    
                         var pass = document.getElementById("pass");
                         var confirm = document.getElementById("confirmpass");
                         //var currpass = document.getElementById("currpass");
@@ -390,20 +444,13 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="container">
-            <div class="instagram text-center">
-                <h3>Đối Tác Của Chúng Tôi</h3>
-            </div>
-            <div class="brands">
-                <ul class="brand_icons">
-                    <li><img src='images/icon1.png' class="img-responsive" alt=""/></li>
-                    <li><img src='images/icon2.png' class="img-responsive" alt=""/></li>
-                    <li><img src='images/icon3.png' class="img-responsive" alt=""/></li>
-                    <li><img src='images/icon4.png' class="img-responsive" alt=""/></li>
-                    <li class="last"><img src='images/icon5.png' class="img-responsive" alt=""/></li>
-                </ul>
-            </div>
-        </div> -->
+        
+        <form action="?" method="POST">
+            
+         </form>
+        
+        
+        
         <div class="container">
             <!-- <div class="instagram_top">
                 <div class="instagram text-center">

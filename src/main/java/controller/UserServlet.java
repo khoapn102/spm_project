@@ -5,6 +5,7 @@
  */
 package controller;
 
+import com.sun.org.apache.xml.internal.security.exceptions.Base64DecodingException;
 import dao.ProductDAO;
 import dao.UserDAO;
 import java.io.IOException;
@@ -23,6 +24,10 @@ import javax.servlet.http.HttpSession;
 import model.Product;
 import model.User;
 import shoppingcart.ShoppingServlet;
+import controller.PasswordProtection;
+import net.tanesha.recaptcha.ReCaptchaImpl;
+import net.tanesha.recaptcha.ReCaptchaResponse;
+import controller.VerifyUtils;
 
 /**
  *
@@ -69,7 +74,7 @@ public class UserServlet extends HttpServlet {
 
                 u = uDao.getOneUserByEmail(email);
 
-                String pass = u.getPassword();
+                String pass = PasswordProtection.decrypt(u.getPassword());
                 String currEmail = u.getEmail();
 
                 if (!email.equals(currEmail) || !inputPass.equals(pass)) {
@@ -101,13 +106,49 @@ public class UserServlet extends HttpServlet {
                 Logger.getLogger(ShoppingServlet.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(ShoppingServlet.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Base64DecodingException ex) {
+                Logger.getLogger(UserServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
+            return;
         } else if (action.equals("register")) {
+            String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
+            boolean valid = VerifyUtils.verify(gRecaptchaResponse);
+            if (!valid) {
+                User regUser = (User) httpSession.getAttribute("regUser");
+                if (regUser != null)  httpSession.removeAttribute("regUser");
+                regUser = new User();
+                regUser.setEmail(request.getParameter("email"));
+                regUser.setPassword(request.getParameter("password"));
+                regUser.setFirst_name(request.getParameter("firstname"));
+                regUser.setLast_name(request.getParameter("lastname"));
+                String date = request.getParameter("date");
+                String month = request.getParameter("month");
+                String year = request.getParameter("year");
+                String dob = date + "-" + month + "-" + year;
+                regUser.setDob(dob);
+                regUser.setPhone_number(request.getParameter("tel"));
+                regUser.setIsManager(0);
+                regUser.setAddress(request.getParameter("address"));
+                regUser.setImage_url(request.getParameter("u_img"));
+               
+                httpSession.setAttribute("regUser", regUser);
+                
+                out.write("<script type='text/javascript'>\n");
+                out.write("alert('Please complete the captcha !');\n");
+                out.write("window.location.href='../WebProj/User/register.jsp';");
+                out.write("</script>\n");
+                return;
+            }
+            
+            User regUser = (User) httpSession.getAttribute("regUser");
+            if (regUser != null)  httpSession.removeAttribute("regUser");
+            
             String email = request.getParameter("email");
             int count = uDao.countEmail(email);
             if (count == 0) {
                 u.setEmail(request.getParameter("email"));
-                u.setPassword(request.getParameter("password"));
+                String pass = request.getParameter("password");
+                u.setPassword(PasswordProtection.encrypt(pass));
                 u.setFirst_name(request.getParameter("firstname"));
                 u.setLast_name(request.getParameter("lastname"));
                 //u.setDob(request.getParameter("dob"));
@@ -151,8 +192,9 @@ public class UserServlet extends HttpServlet {
         } else if (action.equals("changepass")) {
             String password = request.getParameter("newpass");
             u = (User) httpSession.getAttribute("user");
+            String encryptPass = PasswordProtection.encrypt(password);
             u.setPassword(password);
-            uDao.updateUserPass(u.getUid(), password);
+            uDao.updateUserPass(u.getUid(), encryptPass);
             httpSession.setAttribute("user", u);
             response.sendRedirect("User/profile.jsp");
         } else if (action.equals("changeinfo")) {
