@@ -16,8 +16,8 @@
         <link href="../css/style.css" rel='stylesheet' type='text/css' />
         <script src="../js/jquery.easydropdown.js"></script>
         <script src="../js/jquery.magnific-popup.js" type="text/javascript"></script>
-        <link href="../css/magnific-popup.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" src="../js/backtotop.js"></script>
+        <link href="../css/magnific-popup.css" rel="stylesheet" type="text/css">
         <style type="text/css">
             .rating {
                 float:left;
@@ -349,12 +349,6 @@
 
                                             <input type="submit" value="Thêm vào giỏ" title="">
                                         </form>
-                                            
-                                        <!--<div class="col-md-4 login-left">-->
-                                        <form method="post" action="../ProductServlet?action=search&rpid=<%=x.getPid()%>">
-                                            <input type="submit" value="Tìm sản phẩm tương tự" title="">
-                                        </form>
-                                        <!--</div>-->
 
 
                                         <%String url2 = "../controller.WishListServlet?action=add&pid=" + x.getPid();%>
@@ -363,15 +357,12 @@
                                                 <input type="submit" value="+ DS.Mong Muốn" title="">
                                             </form>
                                         </div>
-                                               
                                         <%String url3 = "../shoppingcart.ShoppingServlet?action=addCompare&pid=" + x.getPid();%>
                                         <div class="col-md-4 login-left">
                                             <form method="post" action=<%=url3%>>
                                                 <input type="submit" value="+ D.S So Sánh" title="">
                                             </form>
                                         </div>
-<!--                                        
--->                                        
                                     </div>
 
                                     <% if (user_t != null) {%>
@@ -442,6 +433,9 @@
                             </div>
                             </ul>  
                         </div>-->
+                                        <%@ page import="net.tanesha.recaptcha.ReCaptcha"%>
+                                        <%@ page import="net.tanesha.recaptcha.ReCaptchaFactory"%>  
+                                        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
                                         <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-2">
                                             <ul class="tab_list">
                                                 <!--                                                <li>Chưa có bình luận</li>-->
@@ -461,6 +455,7 @@
                                                                 + "<textarea value=\"Enter your message here...\" maxlength=\"355\" id=\"commentBox\" name=\"content\" onfocus=\"this.value = '';\" onblur=\"if (this.value == '') { "
                                                                 + "this.value = '';"
                                                                 + "}\" required></textarea></div>\n"
+                                                                + "<div class=\"g-recaptcha\" data-sitekey=\"6LewuwwUAAAAAKvnR3GcLNj7D9dCOrSKsu9NByaO\" align=\"left\"></div>\n"
                                                                 + "<pre><input type=\"submit\" class=\"acount-btn\" value=\"Gửi Bình Luận:\"></pre>\n"
                                                                 + "</form>\n"
                                                                 + "<br/><br/>");
@@ -503,18 +498,23 @@
                                                             out.print("<pre style=\"background-color: #ffcc99;\">" + cm.getDate() + " " + cm.getTime() + "<br/>&#9733;<b>" + utemp.getLast_name() + " " + utemp.getFirst_name() + "</b>&#9733; nói: " + cm.getContent());
 
                                                             if (isLogin == true) {
-                                                                out.println("<br/><a class=\"acount-btn\" id=\"comment" + i + "\" href=\"#\">Gửi Phản Hồi</a>\n" + "</pre>");
+                                                                out.println(
+                                                                        //"</div>\n" 
+                                                                        "<br/><a class=\"acount-btn\" id=\"comment" + i + "\" href=\"#\">Gửi Phản Hồi</a>\n" + "</pre>\n" );
+                                                                        //+ "</div>\n");
                                                                 out.println(
                                                                         //"\n<div>\n" +
 
-                                                                        //"</div>\n" +
+                                                                        
                                                                         "\n<form action=\"../CommentServlet?action=newresponse&ucid=" + user_t.getUid() + "&pid=" + x.getPid() + "&cmid=" + cm.getCmid() + "\" method=\"post\" id=\"commentForm" + i + "\" style=\"display: none\">\n"
                                                                         + "<br>\n<div class=\"contact-form\">"
                                                                         + "<textarea value=\"Enter your message here...\" maxlength=\"355\" id=\"rBox"+i+"\" name=\"content\" onfocus=\"this.value = '';\" onblur=\"if (this.value == '') { "
                                                                         + "this.value = '';"
                                                                         + "}\" required></textarea></div>\n"
+                                                                        
                                                                         + "<pre><input type=\"submit\" class=\"acount-btn\" value=\"Gửi Phản Hồi:\"></pre>\n"
                                                                         + "</form>\n"
+                                                                                
                                                                         + "<script type=\"text/javascript\">\n"
                                                                         + "$('#comment" + i + "').click(function (e) {\n"
                                                                         + "if ($('#commentForm" + i + "').is(\":visible\")) {\n"
@@ -685,8 +685,7 @@
                 </div>
             </div>
         </div>
-                                    <p><a href="#" class="back-to-top">Back to Top</a></p>
-
+                            <p><a href="#" class="back-to-top">Back to Top</a></p>
         <script defer src="../js/jquery.flexslider.js"></script>
         <link rel="stylesheet" href="../css/flexslider.css" type="text/css" media="screen" />
 
@@ -698,6 +697,6 @@
                                 });
                             });
         </script>
-        
+
     </body>
 </html>		

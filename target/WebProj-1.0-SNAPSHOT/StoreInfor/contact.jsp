@@ -48,7 +48,7 @@
             if (user_t != null && user_t.getIsManager() == 1) {
                 out.write("<script type='text/javascript'>\n");
                 out.write("alert('You must login as customer!!!');\n");
-                String url = "index.jsp";
+                String url = "../index.jsp";
                 out.write("window.location.href='" + url + "';");
                 out.write("</script>\n");
 //                response.sendRedirect("../User/login.jsp");
@@ -179,6 +179,10 @@
                                 </ul>
                                 <div class="clearfix"></div>
                             </div>
+
+                            <%@ page import="net.tanesha.recaptcha.ReCaptcha"%>
+                            <%@ page import="net.tanesha.recaptcha.ReCaptchaFactory"%>  
+                            
                             <div class="singel_right">
                                 <div class="lcontact span_1_of_contact">
                                     <div class="contact-form">
@@ -215,7 +219,7 @@
                                                     }
                                                 %>
                                             </p>
-                                            <script>
+<!--                                            <script>
                                                 var emailKHBox = document.getElementById("emailKH");
                                                 var pattern = new RegExp(/[~`!#$%\^&*+=\-\[\]\\';/{}|\\":<>\?]/);
                                                 function isValidemailKHBox() {
@@ -226,7 +230,7 @@
                                                     }
                                                 }
                                                 emailKHBox.onchange = isValidemailKHBox;
-                                            </script>
+                                            </script>-->
 
                                             <p class="comment-form-author"><label for="author">Nội dung:</label>
                                                 <textarea value="" id="messKH" maxlength="355" name="message" onfocus="this.value = '';" onblur="if (this.value == '') {
@@ -245,6 +249,10 @@
                                                 }
                                                 messKHBox.onchange = isValidmessKHBox;
                                             </script>
+                                            <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+                                            <div class="clearfix"> </div>                                
+                                            <div class="g-recaptcha" data-sitekey="6LewuwwUAAAAAKvnR3GcLNj7D9dCOrSKsu9NByaO" align="left"></div>
+                                            <div class="clearfix"> </div>    
                                             <input name="submit" type="submit" id="submit" value="Gửi" onclick="displayConfirm()">
                                         </form>
                                         <!--                                        <script type="text/javascript">

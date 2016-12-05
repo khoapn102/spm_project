@@ -1,7 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/* 
+ * Copyright (C) 2016 Kppc
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package controller;
 
@@ -20,7 +31,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+import net.tanesha.recaptcha.ReCaptchaImpl;
+import net.tanesha.recaptcha.ReCaptchaResponse;
+import controller.VerifyUtils;
 /**
  *
  * @author HungPhanN53SV
@@ -69,7 +82,15 @@ public class CommentServlet extends HttpServlet {
             return;
         }        
         else if(action.compareTo("newcomment") == 0){
-            
+            String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
+            boolean valid = VerifyUtils.verify(gRecaptchaResponse);
+            if (!valid) {
+                out.write("<script type='text/javascript'>\n");
+                out.write("alert('Please complete the captcha !');\n");
+                out.write("window.location.href='../WebProj/index.jsp';");
+                out.write("</script>\n");
+                return;
+            }
             cm.setContent(request.getParameter("content"));
             cm.setDate(cDate);
             cm.setPid(request.getParameter("pid"));
@@ -80,7 +101,7 @@ public class CommentServlet extends HttpServlet {
             response.sendRedirect("Product/view.jsp?pid="+pid_t);
             return;
         }
-        else if(action.compareTo("newresponse") == 0){
+        else if(action.compareTo("newresponse") == 0){            
             r.setCmid(Integer.parseInt(request.getParameter("cmid")));
             r.setContent(request.getParameter("content"));
             r.setDate(cDate);
