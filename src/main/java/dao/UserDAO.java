@@ -56,6 +56,10 @@ public class UserDAO {
                 temp.setImage_url(rs.getString("u_img"));
                 users.add(temp);
             }
+            
+            stmt.close();
+            rs.close();
+            
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -79,6 +83,9 @@ public class UserDAO {
             temp.setIsManager(rs.getInt("isManager"));
             temp.setImage_url(rs.getString("u_img"));
         }
+        
+        pstmt.close();
+        rs.close();
         return temp;
     }
 
@@ -100,6 +107,9 @@ public class UserDAO {
             temp.setIsManager(rs.getInt("isManager"));
             temp.setImage_url(rs.getString("u_img"));
         }
+        
+        pstmt.close();
+        rs.close();
         return temp;
     }
 
@@ -110,8 +120,15 @@ public class UserDAO {
         pstmt.setString(1, email);
         ResultSet rs = pstmt.executeQuery();
         
-        if(!rs.next()) return null;
-        else return rs.getString("password");
+        if(!rs.next()) {
+            pstmt.close();
+            rs.close();
+            return null;
+        }
+        
+        pstmt.close();
+        rs.close();
+        return rs.getString("password");
         
     }
     public List<String> getAllEmail() throws SQLException, ClassNotFoundException {
@@ -122,6 +139,9 @@ public class UserDAO {
             String temp = rs.getString("email");
             email.add(temp);
         }
+        
+        stmt.close();
+        rs.close();
         return email;
     }
 
@@ -133,6 +153,9 @@ public class UserDAO {
         while (rs.next()) {
             count++;
         }
+        
+        pstmt.close();
+        rs.close();
         return count;
     }
 
@@ -151,6 +174,8 @@ public class UserDAO {
         pstmt.executeUpdate();
 //      
         User user = getOneUserByEmail(u.getEmail());
+        
+        pstmt.close();
         return user.getUid();
     }
 
@@ -174,12 +199,16 @@ public class UserDAO {
         pstmt.setString(3, cDate);
 
         pstmt.executeUpdate();
+        
+        pstmt.close();
     }
 
     public void removeUser(int uid) throws SQLException, ClassNotFoundException {
         PreparedStatement pstmt = conn.prepareStatement("delete from user where uid=?");
         pstmt.setInt(1, uid);
         pstmt.executeUpdate();
+        
+        pstmt.close();
     }
 
     public void updateUserInfo(User u) throws SQLException, ClassNotFoundException {
@@ -194,6 +223,7 @@ public class UserDAO {
         pstmt.setString(8, u.getImage_url());
         pstmt.setInt(9, u.getUid());
         pstmt.executeUpdate();
+        pstmt.close();
     }
 
     //Only Need to pass UID and PASSWORD
@@ -202,6 +232,7 @@ public class UserDAO {
         pstmt.setString(1, pass);
         pstmt.setInt(2, uid);
         pstmt.executeUpdate();
+        pstmt.close();
     }
 
     //Need customer only;
@@ -224,6 +255,9 @@ public class UserDAO {
                 temp.setImage_url(rs.getString("u_img"));
                 allcus.add(temp);
             }
+            
+            stmt.close();
+            rs.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -249,6 +283,10 @@ public class UserDAO {
                 temp.setImage_url(rs.getString("u_img"));
                 allemp.add(temp);
             }
+            
+            stmt.close();
+            rs.close();
+            
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -263,6 +301,10 @@ public class UserDAO {
             while (rs.next()) {
                 allsub.add(rs.getString("email"));
             }
+            
+            stmt.close();
+            rs.close();
+            
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -303,5 +345,8 @@ public class UserDAO {
         pstmt.setInt(1, point);
         pstmt.setInt(2, uid);
         pstmt.executeUpdate();
+        
+        pstmt.close();
+        rs.close();
     }
 }

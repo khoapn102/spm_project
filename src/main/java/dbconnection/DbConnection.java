@@ -27,7 +27,7 @@ public class DbConnection {
     private static Connection connection;
     private static String URL = "jdbc:mysql://localhost:3306/onlinestore?useUnicode=yes&characterEncoding=UTF-8";
     private static String username = "root";
-    private static String password = "8452186";
+    private static String password = "admin";
 
     public static Connection getConnection() throws SQLException, ClassNotFoundException {
         Class.forName("com.mysql.jdbc.Driver");

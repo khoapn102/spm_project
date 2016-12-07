@@ -55,6 +55,9 @@ public class WishListDAO {
             w.setTime(rs.getString("time"));
             list.add(w);
         }
+        
+        pstmt.close();
+        rs.close();
 
         return list;
     }
@@ -66,8 +69,14 @@ public class WishListDAO {
         
         ResultSet rs = pstmt.executeQuery();
         
-        if(rs.next())
+        if(rs.next()) {
+            pstmt.close();
+            rs.close();
             return true;
+        }
+        
+        pstmt.close();
+        rs.close();
         
         return false;
         
@@ -98,6 +107,7 @@ public class WishListDAO {
             uidList.add(rs.getInt("mid"));
         }
 
+        pstmt.close();
         rs.close();
 
         return uidList;
@@ -116,6 +126,7 @@ public class WishListDAO {
             pidList.add(rs.getString("pid"));
         }
 
+        pstmt.close();
         rs.close();
 
         return pidList;
@@ -143,6 +154,8 @@ public class WishListDAO {
         pstmt.setString(3, cDate);
         pstmt.setString(4, cTime);
         pstmt.executeUpdate();
+        
+        pstmt.close();
 
     }
     
@@ -152,5 +165,7 @@ public class WishListDAO {
         pstmt.setString(2, pid);
         
         pstmt.executeUpdate();
+        
+        pstmt.close();
     }
 }

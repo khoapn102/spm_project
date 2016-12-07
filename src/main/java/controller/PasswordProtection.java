@@ -20,6 +20,8 @@ package controller;
 
 import com.sun.org.apache.xml.internal.security.exceptions.Base64DecodingException;
 import com.sun.org.apache.xml.internal.security.utils.Base64;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -34,5 +36,16 @@ public class PasswordProtection {
     public static String decrypt(String encrypt) throws Base64DecodingException{
         String decrypt = new String(Base64.decode(encrypt.getBytes()));
         return decrypt;
+    }
+    
+    public static void main(String[] args) {
+        try {
+            String pass = "b";
+            //System.out.println(PasswordProtection.encrypt(pass));
+
+            System.out.println(PasswordProtection.decrypt("Yg=="));
+        } catch (Base64DecodingException ex) {
+            Logger.getLogger(PasswordProtection.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

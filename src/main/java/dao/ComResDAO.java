@@ -53,6 +53,7 @@ public class ComResDAO {
             temp.setTime(rs.getString("time_post"));
             comments.add(temp);
         }
+        pstmt.close();
         return comments;
     }
 
@@ -72,6 +73,7 @@ public class ComResDAO {
             temp.setTime(rs.getString("time_post"));
             responses.add(temp);
         }
+        pstmt.close();
         return responses;
     }
 
@@ -83,6 +85,7 @@ public class ComResDAO {
         pstmt.setString(4, comment.getDate());
         pstmt.setString(5, comment.getTime());
         pstmt.executeUpdate();
+        pstmt.close();
     }
 
     public void addResponse(Response response) throws SQLException, ClassNotFoundException {
@@ -93,6 +96,7 @@ public class ComResDAO {
         pstmt.setString(4, response.getDate());
         pstmt.setString(5, response.getTime());
         pstmt.executeUpdate();
+        pstmt.close();
     }
 
     public String getText(String cmid, String pid, int ucid) throws SQLException, ClassNotFoundException {
@@ -105,6 +109,7 @@ public class ComResDAO {
         while (rs.next()) {
             content = rs.getString("content");
         }
+        pstmt.close();
         return content;
     }
 

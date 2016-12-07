@@ -45,6 +45,8 @@ public class ProductDAO {
         while (rs.next()) {
             res = rs.getString("type_name");
         }
+        pstmt.close();
+        rs.close();
         return res;
     }
 
@@ -56,6 +58,8 @@ public class ProductDAO {
             String temp = rs.getString("type_name");
             res.add(temp);
         }
+        pstmt.close();
+        rs.close();
         return res;
     }
 
@@ -67,6 +71,8 @@ public class ProductDAO {
         while(rs.next()){
             res = rs.getString("type_name");
         }
+        pstmt.close();
+        rs.close();
         return res;
     }
     
@@ -78,6 +84,8 @@ public class ProductDAO {
         while(rs.next()){
             res++;
         }
+        pstmt.close();
+        rs.close();
         return res;
     }
     
@@ -100,6 +108,8 @@ public class ProductDAO {
             temp.setDiscount(rs.getDouble("discount"));
             prod.add(temp);
         }
+        stmt.close();
+        rs.close();
         return prod;
     }
     
@@ -111,6 +121,8 @@ public class ProductDAO {
         while(rs.next()){
             res = rs.getInt("price");
         }
+        pstmt.close();
+        rs.close();
         return res;
     }
     
@@ -132,6 +144,8 @@ public class ProductDAO {
             temp.setDiscount(rs.getDouble("discount"));
             prod.add(temp);
         }
+        stmt.close();
+        rs.close();
         return prod;
     }
     
@@ -158,6 +172,8 @@ public class ProductDAO {
             temp.setDiscount(rs.getDouble("discount"));
             prod.add(temp);
         }
+        pstmt.close();
+        rs.close();
         return prod;
     }
 
@@ -181,6 +197,8 @@ public class ProductDAO {
             temp.setDiscount(rs.getDouble("discount"));
             prod.add(temp);
         }
+        pstmt.close();
+        rs.close();
         return prod;
     }
 
@@ -203,6 +221,8 @@ public class ProductDAO {
             temp.setDiscount(rs.getDouble("discount"));
             prod.add(temp);
         }
+        pstmt.close();
+        rs.close();
         return prod;
     }
 
@@ -225,6 +245,8 @@ public class ProductDAO {
             temp.setDiscount(rs.getDouble("discount"));
             prod.add(temp);
         }
+        pstmt.close();
+        rs.close();
         return prod;
     }
     
@@ -361,7 +383,10 @@ public class ProductDAO {
             prod.add(temp);
         }
         
-        System.out.println("List size " + prod.size());
+        // System.out.println("List size " + prod.size());
+        
+        pstmt.close();
+        rs.close();
         
         return prod;
     }
@@ -385,6 +410,8 @@ public class ProductDAO {
             temp.setDiscount(rs.getDouble("discount"));
             prod.add(temp);
         }
+        pstmt.close();
+        rs.close();
         return prod;
     }
 
@@ -405,6 +432,8 @@ public class ProductDAO {
             temp.setP_img(rs.getString("p_img"));
             temp.setDiscount(rs.getDouble("discount"));
         }
+        pstmt.close();
+        rs.close();
         return temp;
     }
 
@@ -416,6 +445,8 @@ public class ProductDAO {
         while (rs.next()) {
             q = Integer.parseInt(rs.getString("quantity"));
         }
+        pstmt.close();
+        rs.close();
         return q;
     }
 
@@ -432,12 +463,14 @@ public class ProductDAO {
         pstmt.setString(9, p.getP_img());
         pstmt.setDouble(10, p.getDiscount());
         pstmt.executeUpdate();
+        pstmt.close();
     }
 
     public void removeProduct(String pid) throws SQLException, ClassNotFoundException {
         PreparedStatement pstmt = conn.prepareStatement("delete from product where pid=?");
         pstmt.setString(1, pid);
         pstmt.executeUpdate();
+        pstmt.close();
     }
 
     public void updateProduct(Product p) throws SQLException, ClassNotFoundException {
@@ -453,6 +486,7 @@ public class ProductDAO {
         pstmt.setDouble(9, p.getDiscount());
         pstmt.setString(10, p.getPid());
         pstmt.executeUpdate();
+        pstmt.close();
     }
 //    
 
@@ -461,6 +495,7 @@ public class ProductDAO {
         pstmt.setInt(1, quantity);
         pstmt.setString(2, pid);
         pstmt.executeUpdate();
+        pstmt.close();
     }
 
     public void updateOrders(User u, ArrayList<Product> cart) throws SQLException {
@@ -488,6 +523,7 @@ public class ProductDAO {
             pstmt.setString(4, cTime);
             pstmt.setInt(5, cart.get(i).getQuantity());
             pstmt.executeUpdate();
+            pstmt.close();
         }
     }
 

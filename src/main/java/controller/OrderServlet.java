@@ -45,37 +45,44 @@ public class OrderServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException, ClassNotFoundException {
-        request.setCharacterEncoding("UTF-8");
-        PrintWriter out = response.getWriter();
-        String action = request.getParameter("action");
-        OrderDAO odao = new OrderDAO();
-        if (action == null) {
-            response.sendRedirect("error.jsp");
-            return;
+        
+        try {
+            request.setCharacterEncoding("UTF-8");
+            PrintWriter out = response.getWriter();
+            String action = request.getParameter("action");
+            OrderDAO odao = new OrderDAO();
+            if (action == null) {
+                response.sendRedirect("error.jsp");
+                return;
+            }
+
+            if (action.equals("delete")) {
+                int mid = Integer.parseInt(request.getParameter("mid").trim());
+                String pid = request.getParameter("pid");
+                String date = request.getParameter("date");
+                String time = request.getParameter("time");
+                odao.deleteOrder(mid, pid, date, time);
+                out.write("<script type='text/javascript'>\n");
+                out.write("alert('Database Successfully Updated !!');\n");
+                out.write("window.location.href='../WebProj/Product/storemanage.jsp';");
+                out.write("</script>\n");
+            } else if (action.equals("edit")) {
+                int mid = Integer.parseInt(request.getParameter("mid").trim());
+                String pid = request.getParameter("pid");
+                String date = request.getParameter("date");
+                String time = request.getParameter("time");
+                int quantity = Integer.parseInt(request.getParameter("quantity").trim());
+                odao.updateDbOrder(mid, pid, date, time, quantity);
+                out.write("<script type='text/javascript'>\n");
+                out.write("alert('Database Successfully Updated !!');\n");
+                out.write("window.location.href='../WebProj/Product/storemanage.jsp';");
+                out.write("</script>\n");
+            }
+        }
+        catch(Exception e) {
+            
         }
         
-        if (action.equals("delete")) {
-            int mid = Integer.parseInt(request.getParameter("mid").trim());
-            String pid = request.getParameter("pid");
-            String date = request.getParameter("date");
-            String time = request.getParameter("time");
-            odao.deleteOrder(mid, pid, date, time);
-            out.write("<script type='text/javascript'>\n");
-            out.write("alert('Database Successfully Updated !!');\n");
-            out.write("window.location.href='../WebProj/Product/storemanage.jsp';");
-            out.write("</script>\n");
-        } else if (action.equals("edit")) {
-            int mid = Integer.parseInt(request.getParameter("mid").trim());
-            String pid = request.getParameter("pid");
-            String date = request.getParameter("date");
-            String time = request.getParameter("time");
-            int quantity = Integer.parseInt(request.getParameter("quantity").trim());
-            odao.updateDbOrder(mid, pid, date, time, quantity);
-            out.write("<script type='text/javascript'>\n");
-            out.write("alert('Database Successfully Updated !!');\n");
-            out.write("window.location.href='../WebProj/Product/storemanage.jsp';");
-            out.write("</script>\n");
-        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

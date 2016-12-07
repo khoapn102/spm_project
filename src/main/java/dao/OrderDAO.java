@@ -56,6 +56,8 @@ public class OrderDAO {
             temp.setQuantity(rs.getInt("quantity"));
             ords.add(temp);
         }
+        stmt.close();
+        rs.close();
         return ords;
     }
 
@@ -67,6 +69,8 @@ public class OrderDAO {
             r.put(rs.getString("pid"), rs.getInt("qt"));
         }
         Set report = r.entrySet();
+        stmt.close();
+        rs.close();
         return report;
     }
     
@@ -84,6 +88,8 @@ public class OrderDAO {
             temp.setDate(rs.getString("date"));
             temp.setTime(rs.getString("time"));
         }
+        pstmt.close();
+        rs.close();
         return temp;
     }
 
@@ -112,6 +118,7 @@ public class OrderDAO {
             pstmt.setString(4, cTime);
             pstmt.setInt(5, cart.get(i).getQuantity());
             pstmt.executeUpdate();
+            pstmt.close();
         }
     }
 
@@ -122,6 +129,7 @@ public class OrderDAO {
         pstmt.setString(3, odate);
         pstmt.setString(4, otime);
         pstmt.executeUpdate();
+        pstmt.close();
     }
 
     public void updateDbOrder(int mid, String pid, String odate, String otime, int quantity) throws SQLException {
@@ -132,6 +140,7 @@ public class OrderDAO {
         pstmt.setString(4, odate);
         pstmt.setString(5, otime);
         pstmt.executeUpdate();
+        pstmt.close();
     }
 
     public List<Order> getBestSeller() throws SQLException, ClassNotFoundException {
@@ -147,6 +156,8 @@ public class OrderDAO {
             temp.setQuantity(rs.getInt("sumq"));
             best.add(temp);
         }
+        stmt.close();
+        rs.close();
         return best;
     }
 

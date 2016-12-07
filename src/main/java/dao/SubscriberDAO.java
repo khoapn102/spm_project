@@ -52,8 +52,14 @@ public class SubscriberDAO {
                 "select * FROM 	((select * from subscriber where email='"+email+"') UNION (select email from user where email='"+email+"')) t");
         ResultSet rs = psmt.executeQuery();
 
-        if (rs.next())  return true;
-
+        if (rs.next()) {
+            psmt.close();
+            rs.close();
+            return true;
+        }
+        
+        psmt.close();
+        rs.close();
         return false;  
     }
     
@@ -61,7 +67,8 @@ public class SubscriberDAO {
         PreparedStatement psmt = conn.prepareStatement(
                 "insert into subscriber(email) values (?)");
         psmt.setString(1, s.getEmail());
-        psmt.executeUpdate();        
+        psmt.executeUpdate();   
+        psmt.close();
     }
     
     public static void main(String args[]) throws SQLException, ClassNotFoundException{

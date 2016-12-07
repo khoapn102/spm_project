@@ -182,7 +182,7 @@
                             <div class='clearfix'></div>
                         </ul>
                         <div class="search">
-                            <form method="post" action="../Product/search.jsp">
+                            <form method="post" action="../ProductServlet?action=search">
                                 <input type="text" value="Tìm kiếm" name="searchkeyword" onfocus="this.value = '';" onblur="if (this.value == '') {
                                             this.value = 'Tìm kiếm';
                                         }">
@@ -193,20 +193,59 @@
                             </form>
                         </div>
                         <div class="login-right">
-                            <form method="post" action="../Product/search.jsp">
+                            <a href="#"><h3 class="menu_head" style="font-size: 18px; color: white;" id="advSearch"><b>Tìm kiếm nâng cao</b></h3></a>
+                            <form method="post" action="../ProductServlet?action=search" id="searchForm" style="display: none">
                                 <label style="background-color: white; padding-right: 35px">
-                                    Chọn sản phẩm theo mức giá
+                                    &nbsp;Chọn mức giá sản phẩm
                                 </label>
                                 <select name="price">
+                                    <option>Chưa chọn mức giá</option>
                                     <option>1.000.000 - 3.000.000</option>
                                     <option>3.000.000 - 5.000.000</option>
                                     <option>5.000.000 - 8.000.000</option>
                                     <option>Hơn 8.000.000</option>
                                 </select>
+                                
+                                <br>
+                                
+                                <label style="background-color: white; padding-right: 35px">
+                                    &nbsp;Chọn chủng loại sản phẩm
+                                    <br>
+                                
+                                    <p>&nbsp;<input type="checkbox" name="category" value="Phụ Kiện Nội Thất">Phụ Kiện Nội Thất</p>
+                                    <p>&nbsp;<input type="checkbox" name="category" value="Nội Thất Phòng Ngủ">Nội Thất Phòng Ngủ</p>
+                                    <p>&nbsp;<input type="checkbox" name="category" value="Nội Thất Nhà Bếp">Nội Thất Nhà Bếp</p>
+                                    <p>&nbsp;<input type="checkbox" name="category" value="Nội Thất Phòng Khách">Nội Thất Phòng Khách</p>
+                                    <p>&nbsp;<input type="checkbox" name="category" value="Nội Thất Văn Phòng">Nội Thất Văn Phòng</p>
+                                </label>
+                                
+                                <label style="background-color: white; padding-right: 35px">
+                                    &nbsp;Chọn mức giảm giá
+                                    <br>
+                                </label>
+                                
+                                <select name="discount">
+                                    <option>Chưa chọn mức giảm giá</option>
+                                    <option>0 - 20%</option>
+                                    <option>20 - 50%</option>
+                                    <option>Hơn 50%</option>
+                                </select>
+                                
                                 <input type="submit" value="Tìm">
                                 <br><br>
                             </form>
                         </div>
+                                
+                        <script type="text/javascript">
+                            $('#advSearch').click(function (e) {
+                                if ($('#searchForm').is(":visible")) {
+                                    $('#searchForm').hide("slow");
+                                } else {
+                                    $('#searchForm').show("slow");
+                                }
+                                e.preventDefault();
+                            });
+                        </script>
                     </div>
                     <div class='clearfix'></div>
                 </div>
@@ -235,16 +274,16 @@
                             <div class="tags">
                                 <h4 class="tag_head">Thẻ Tìm Kiếm Nhanh</h4>
                                 <ul class="tags_links">
-                                    <li><a href="../Product/search.jsp?searchkeyword=Tủ Bếp">Tủ Bếp</a></li>
-                                    <li><a href="../Product/search.jsp?searchkeyword=Bàn Làm Việc">Bàn Làm Việc</a></li>
-                                    <li><a href="../Product/search.jsp?searchkeyword=Giường Ngủ">Giường Ngủ</a></li>
-                                    <li><a href="../Product/search.jsp?searchkeyword=Ghế Gỗ">Ghế Gỗ</a></li>
-                                    <li><a href="../Product/search.jsp?searchkeyword=Tủ Tivi">Tủ Tivi</a></li>
-                                    <li><a href="../Product/search.jsp?searchkeyword=Khung Gương">Khung Gương</a></li>
-                                    <li><a href="../Product/search.jsp?searchkeyword=Sang Trọng">Sang Trọng</a></li>
-                                    <li><a href="../Product/search.jsp?searchkeyword=Cao Cấp">Cao Cấp</a></li>
-                                    <li><a href="../Product/search.jsp?searchkeyword=Hiện đại">Hiện Đại</a></li>
-                                    <li><a href="../Product/search.jsp?searchkeyword=Cổ điển">Cổ Điển</a></li>
+                                        <li><a href="../ProductServlet?action=search&searchkeyword=Tủ Bếp">Tủ Bếp</a></li>
+                                        <li><a href="../ProductServlet?action=search&searchkeyword=Bàn Làm Việc">Bàn Làm Việc</a></li>
+                                        <li><a href="../ProductServlet?action=search&searchkeyword=Giường Ngủ">Giường Ngủ</a></li>
+                                        <li><a href="../ProductServlet?action=search&searchkeyword=Ghế Gỗ">Ghế Gỗ</a></li>
+                                        <li><a href="../ProductServlet?action=search&searchkeyword=Tủ Tivi">Tủ Tivi</a></li>
+                                        <li><a href="../ProductServlet?action=search&searchkeyword=Khung Gương">Khung Gương</a></li>
+                                        <li><a href="../ProductServlet?action=search&searchkeyword=Sang Trọng">Sang Trọng</a></li>
+                                        <li><a href="../ProductServlet?action=search&searchkeyword=Cao Cấp">Cao Cấp</a></li>
+                                        <li><a href="../ProductServlet?action=search&searchkeyword=Hiện đại">Hiện Đại</a></li>
+                                        <li><a href="../ProductServlet?action=search&searchkeyword=Cổ điển">Cổ Điển</a></li>
                                 </ul>
                             </div>
                         </div>

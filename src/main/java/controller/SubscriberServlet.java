@@ -49,43 +49,50 @@ public class SubscriberServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException, ClassNotFoundException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
         
-        String action = request.getParameter("action");
-        HttpSession httpSession = request.getSession();
-        Subscriber s = new Subscriber();
-        s.setEmail(request.getParameter("email"));
-        SubscriberDAO sDAO = new SubscriberDAO();
-        
-        if(action==null){
-            response.sendRedirect("index.jsp");
-            return;
-        }
-        
-        if(action.compareTo("add") == 0){
-            boolean status = sDAO.checkExist(s);
-            if(status == true || s.getEmail() == null){
-                out.write("<script type='text/javascript'>\n");
-                out.write("alert('Input email is invalid !!!');\n");
-                String url = "index.jsp";
-                out.write("window.location.href='" + url + "';");
-                out.write("</script>\n");
-                return;
-            }else{
-                sDAO.addSubscriber(s);
-                out.write("<script type='text/javascript'>\n");
-                out.write("alert('Database is updated !!!');\n");
-                String url = "index.jsp";
-                out.write("window.location.href='" + url + "';");
-                out.write("</script>\n");
+        try {
+            response.setContentType("text/html;charset=UTF-8");
+            PrintWriter out = response.getWriter();
+
+            String action = request.getParameter("action");
+            HttpSession httpSession = request.getSession();
+            Subscriber s = new Subscriber();
+            s.setEmail(request.getParameter("email"));
+            SubscriberDAO sDAO = new SubscriberDAO();
+
+            if(action==null){
+                response.sendRedirect("index.jsp");
                 return;
             }
-            
-        }else{
-            response.sendRedirect("index.jsp");
-            return;
+
+            if(action.compareTo("add") == 0){
+                boolean status = sDAO.checkExist(s);
+                if(status == true || s.getEmail() == null){
+                    out.write("<script type='text/javascript'>\n");
+                    out.write("alert('Input email is invalid !!!');\n");
+                    String url = "index.jsp";
+                    out.write("window.location.href='" + url + "';");
+                    out.write("</script>\n");
+                    return;
+                }else{
+                    sDAO.addSubscriber(s);
+                    out.write("<script type='text/javascript'>\n");
+                    out.write("alert('Database is updated !!!');\n");
+                    String url = "index.jsp";
+                    out.write("window.location.href='" + url + "';");
+                    out.write("</script>\n");
+                    return;
+                }
+
+            }else{
+                response.sendRedirect("index.jsp");
+                return;
+            }
         }
+        catch(Exception e) {
+            
+        }
+        
         
         
     }

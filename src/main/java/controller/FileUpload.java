@@ -48,28 +48,35 @@ public class FileUpload extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        PrintWriter out = response.getWriter();
-        HttpSession session = request.getSession();
-        String path = "E:\\5. Web\\WebProj\\web\\image";
-        String pid = (String) session.getAttribute("tempPid");
-        String cid = (String) session.getAttribute("tempCid");
-        path += File.separator + cid + File.separator + pid.substring(pid.length() - 1);
-        File fileSaveDir = new File(path);
-        if (!fileSaveDir.exists()) {
-            fileSaveDir.mkdir();
+        
+        try {
+            PrintWriter out = response.getWriter();
+            HttpSession session = request.getSession();
+            String path = "E:\\5. Web\\WebProj\\web\\image";
+            String pid = (String) session.getAttribute("tempPid");
+            String cid = (String) session.getAttribute("tempCid");
+            path += File.separator + cid + File.separator + pid.substring(pid.length() - 1);
+            File fileSaveDir = new File(path);
+            if (!fileSaveDir.exists()) {
+                fileSaveDir.mkdir();
+            }
+            //String fileName = "";
+            for (Part part : request.getParts()) {
+                String fileName = extractFileName(part);
+                part.write(path + File.separator + fileName);
+            }
+            out.write("<script type='text/javascript'>\n");
+            out.write("alert('Database Successfully Updated !!');\n");
+            out.write("window.location.href='/WebProj/MailServlet?action=notify';");
+            //out.write("window.location.href='../WebProj/Product/addPicture.jsp';");
+            out.write("</script>\n");
+            //request.setAttribute("me", path);
+            //getServletContext().getRequestDispatcher("/Product/message.jsp").forward(request, response);
         }
-        //String fileName = "";
-        for (Part part : request.getParts()) {
-            String fileName = extractFileName(part);
-            part.write(path + File.separator + fileName);
+        catch(Exception e) {
+            
         }
-        out.write("<script type='text/javascript'>\n");
-        out.write("alert('Database Successfully Updated !!');\n");
-        out.write("window.location.href='/WebProj/MailServlet?action=notify';");
-        //out.write("window.location.href='../WebProj/Product/addPicture.jsp';");
-        out.write("</script>\n");
-        //request.setAttribute("me", path);
-        //getServletContext().getRequestDispatcher("/Product/message.jsp").forward(request, response);
+        
     }
 
     private String extractFileName(Part part) {

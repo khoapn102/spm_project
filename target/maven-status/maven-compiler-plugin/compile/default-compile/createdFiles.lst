@@ -12,10 +12,12 @@ dao\ComResDAO.class
 dao\WishListDAO.class
 controller\ProductServlet.class
 controller\FileUpload.class
+controller\PasswordProtection.class
 controller\OrderServlet.class
 model\Mail.class
 model\Order.class
 shoppingcart\ShoppingServlet.class
+controller\VerifyUtils.class
 dao\MailDAO.class
 dbconnection\DbConnection.class
 controller\WishListServlet.class

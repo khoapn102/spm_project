@@ -215,16 +215,16 @@
                                                         <div class="tags">
                                                             <h4 class="tag_head">Thẻ Tìm Kiếm Nhanh</h4>
                                                             <ul class="tags_links">
-                                                                <li><a href="Product/search.jsp?searchkeyword=Tủ Bếp">Tủ Bếp</a></li>
-                                                                <li><a href="Product/search.jsp?searchkeyword=Bàn Làm Việc">Bàn Làm Việc</a></li>
-                                                                <li><a href="Product/search.jsp?searchkeyword=Giường Ngủ">Giường Ngủ</a></li>
-                                                                <li><a href="Product/search.jsp?searchkeyword=Ghế Gỗ">Ghế Gỗ</a></li>
-                                                                <li><a href="Product/search.jsp?searchkeyword=Tủ Tivi">Tủ Tivi</a></li>
-                                                                <li><a href="Product/search.jsp?searchkeyword=Khung Gương">Khung Gương</a></li>
-                                                                <li><a href="Product/search.jsp?searchkeyword=Sang Trọng">Sang Trọng</a></li>
-                                                                <li><a href="Product/search.jsp?searchkeyword=Cao Cấp">Cao Cấp</a></li>
-                                                                <li><a href="Product/search.jsp?searchkeyword=Hiện đại">Hiện Đại</a></li>
-                                                                <li><a href="Product/search.jsp?searchkeyword=Cổ điển">Cổ Điển</a></li>
+                                                                <li><a href="ProductServlet?action=search&searchkeyword=Tủ Bếp">Tủ Bếp</a></li>
+                                                                <li><a href="ProductServlet?action=search&searchkeyword=Bàn Làm Việc">Bàn Làm Việc</a></li>
+                                                                <li><a href="ProductServlet?action=search&searchkeyword=Giường Ngủ">Giường Ngủ</a></li>
+                                                                <li><a href="ProductServlet?action=search&searchkeyword=Ghế Gỗ">Ghế Gỗ</a></li>
+                                                                <li><a href="ProductServlet?action=search&searchkeyword=Tủ Tivi">Tủ Tivi</a></li>
+                                                                <li><a href="ProductServlet?action=search&searchkeyword=Khung Gương">Khung Gương</a></li>
+                                                                <li><a href="ProductServlet?action=search&searchkeyword=Sang Trọng">Sang Trọng</a></li>
+                                                                <li><a href="ProductServlet?action=search&searchkeyword=Cao Cấp">Cao Cấp</a></li>
+                                                                <li><a href="ProductServlet?action=search&searchkeyword=Hiện đại">Hiện Đại</a></li>
+                                                                <li><a href="ProductServlet?action=search&searchkeyword=Cổ điển">Cổ Điển</a></li>
                                                             </ul>
                                                         </div>
                                                     </div>

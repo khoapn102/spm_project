@@ -52,119 +52,126 @@ public class MailServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException, ClassNotFoundException, Base64DecodingException {
-        request.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
+        
+        try {
+            request.setCharacterEncoding("UTF-8");
+            response.setContentType("text/html;charset=UTF-8");
+            PrintWriter out = response.getWriter();
 
-        String action = request.getParameter("action");
+            String action = request.getParameter("action");
 
-        if (action == null) {
-            response.sendRedirect("index.jsp");
-            return;
-        }
-
-        HttpSession httpSession = request.getSession();
-
-        boolean sendingStatus;
-        Mail mail = (Mail) httpSession.getAttribute("mail");
-        MailDAO md;
-
-        if (action.compareTo("notify") == 0) {
-            md = new MailDAO(mail.getSender(), mail.getPwd());
-            sendingStatus = md.sendToPeople(mail.getRecipient(), mail.getSubject(), mail.getContent());
-            if (sendingStatus == false) {
-                out.write("<script type='text/javascript'>\n");
-                out.write("alert('Notify Mail has been failed !');\n");
-                out.write("window.location.href='../WebProj/Product/storemanage.jsp';");
-                out.write("</script>\n");
-                //response.sendRedirect("Product/storemanage.jsp");
-                return;
-            } else {
-                out.write("<script type='text/javascript'>\n");
-                out.write("alert('Notify Mail was sent successfully !');\n");
-                out.write("window.location.href='../WebProj/Product/storemanage.jsp';");
-                out.write("</script>\n");
-                //response.sendRedirect("Product/storemanage.jsp");
+            if (action == null) {
+                response.sendRedirect("index.jsp");
                 return;
             }
-        } else if (action.compareTo("contact") == 0) {
-            String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
-            boolean valid = VerifyUtils.verify(gRecaptchaResponse);
-            if (!valid) {                
-                out.write("<script type='text/javascript'>\n");
-                out.write("alert('Please complete the captcha !');\n");
-                out.write("window.location.href='../WebProj/StoreInfor/contact.jsp';");
-                out.write("</script>\n");
-                return;
-            }
-            
-            String content
-                    = "<html>\n"
-                    + "<body>\n"
-                    + "<h1>Tin nhắn liên hệ từ khách hàng</h1>\n"
-                    + "<p><b>Tên khách hàng</b>: " + request.getParameter("author") + "<br/>\n"
-                    + "<b>Email của khách hàng</b>: " + request.getParameter("email") + "<br/>\n"
-                    + "<b>Nội dung tin nhắn</b>: " + request.getParameter("message") + "</p>\n"
-                    + "</body>\n"
-                    + "</html>\n";
 
-            md = new MailDAO("woodonline.store@gmail.com", "woodshop123");
-            md.sendToPerson("woodonline.store@gmail.com", "[Liên Hệ]", content);
-            //md.sendToPerson("nguyenvanquy.woodworkshop@gmail.com", "[Liên Hệ]", "Từ: " + request.getParameter("email") + "<br/>" + request.getParameter("message"));
+            HttpSession httpSession = request.getSession();
 
-            response.sendRedirect("mailStatus.jsp?status=success");
-            return;
+            boolean sendingStatus;
+            Mail mail = (Mail) httpSession.getAttribute("mail");
+            MailDAO md;
 
-        } else if (action.compareTo("billing") == 0) {
-            md = new MailDAO(mail.getSender(), mail.getPwd());
-            sendingStatus = md.sendToPerson(mail.getRecipient().get(0), mail.getSubject(), mail.getContent());
-            if (sendingStatus == false) {
-                response.sendRedirect("mailStatus.jsp?status=fail");
-                return;
-            } else {
-                response.sendRedirect("Transaction/billing.jsp");
-                return;
-            }
-        } else if (action.compareTo("forgetPassword") == 0) {
-            UserDAO uDAO = new UserDAO();
-            String email_t = request.getParameter("forgetEmail");
-            String pass = PasswordProtection.decrypt(uDAO.getPasswordOneUserByEmail(email_t));
+            if (action.compareTo("notify") == 0) {
+                md = new MailDAO(mail.getSender(), mail.getPwd());
+                sendingStatus = md.sendToPeople(mail.getRecipient(), mail.getSubject(), mail.getContent());
+                if (sendingStatus == false) {
+                    out.write("<script type='text/javascript'>\n");
+                    out.write("alert('Notify Mail has been failed !');\n");
+                    out.write("window.location.href='../WebProj/Product/storemanage.jsp';");
+                    out.write("</script>\n");
+                    //response.sendRedirect("Product/storemanage.jsp");
+                    return;
+                } else {
+                    out.write("<script type='text/javascript'>\n");
+                    out.write("alert('Notify Mail was sent successfully !');\n");
+                    out.write("window.location.href='../WebProj/Product/storemanage.jsp';");
+                    out.write("</script>\n");
+                    //response.sendRedirect("Product/storemanage.jsp");
+                    return;
+                }
+            } else if (action.compareTo("contact") == 0) {
+                String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
+                boolean valid = VerifyUtils.verify(gRecaptchaResponse);
+                if (!valid) {                
+                    out.write("<script type='text/javascript'>\n");
+                    out.write("alert('Please complete the captcha !');\n");
+                    out.write("window.location.href='../WebProj/StoreInfor/contact.jsp';");
+                    out.write("</script>\n");
+                    return;
+                }
 
-            if (pass == null) {
-                out.write("<script type='text/javascript'>\n");
-                out.write("alert('Email does not exit or Email is invalid !');\n");
-                out.write("window.location.href='../WebProj/User/login.jsp';");
-                out.write("</script>\n");
-                return;
-            } else {
                 String content
                         = "<html>\n"
                         + "<body>\n"
-                        + "<h1>Nhắc mật khẩu</h1>\n"
-                        + "<p>Mật khẩu tài khoản <b>"+email_t+"</b> là: " + pass +"<br/>\n"
-                        + "<p>Quý khách vui lòng dùng mật khẩu trên, truy cập vào trang của cửa hàng để mua sắm </p>"
-                        + "<p>----------------<br/><b>XƯỞNG MỘC NGUYỄN VĂN QUÝ<br/>"
-                        + "Cơ sở 1: 449/22 đường Hương Lộ 2, phường Bình Trị Đông, quận Bình Tân, TP.HCM<br/>"
-                        + "Cơ sở 2: 449/38/6 đường Hương Lộ 2, phường Bình Trị Đông, quận Bình Tân, TP.HCM<br/>"
-                        + "Điện thoại: 08.5407.0556 - Đường dây nóng: 0938.200.871</b></p>"
-                        + "</body>"
+                        + "<h1>Tin nhắn liên hệ từ khách hàng</h1>\n"
+                        + "<p><b>Tên khách hàng</b>: " + request.getParameter("author") + "<br/>\n"
+                        + "<b>Email của khách hàng</b>: " + request.getParameter("email") + "<br/>\n"
+                        + "<b>Nội dung tin nhắn</b>: " + request.getParameter("message") + "</p>\n"
+                        + "</body>\n"
                         + "</html>\n";
 
                 md = new MailDAO("woodonline.store@gmail.com", "woodshop123");
-                md.sendToPerson(email_t, "[Nhắc mật khẩu]", content);
+                md.sendToPerson("woodonline.store@gmail.com", "[Liên Hệ]", content);
                 //md.sendToPerson("nguyenvanquy.woodworkshop@gmail.com", "[Liên Hệ]", "Từ: " + request.getParameter("email") + "<br/>" + request.getParameter("message"));
 
-                out.write("<script type='text/javascript'>\n");
-                out.write("alert('Check your mail for the password !');\n");
-                out.write("window.location.href='../WebProj/User/login.jsp';");
-                out.write("</script>\n");
+                response.sendRedirect("mailStatus.jsp?status=success");
+                return;
+
+            } else if (action.compareTo("billing") == 0) {
+                md = new MailDAO(mail.getSender(), mail.getPwd());
+                sendingStatus = md.sendToPerson(mail.getRecipient().get(0), mail.getSubject(), mail.getContent());
+                if (sendingStatus == false) {
+                    response.sendRedirect("mailStatus.jsp?status=fail");
+                    return;
+                } else {
+                    response.sendRedirect("Transaction/billing.jsp");
+                    return;
+                }
+            } else if (action.compareTo("forgetPassword") == 0) {
+                UserDAO uDAO = new UserDAO();
+                String email_t = request.getParameter("forgetEmail");
+                String pass = PasswordProtection.decrypt(uDAO.getPasswordOneUserByEmail(email_t));
+
+                if (pass == null) {
+                    out.write("<script type='text/javascript'>\n");
+                    out.write("alert('Email does not exit or Email is invalid !');\n");
+                    out.write("window.location.href='../WebProj/User/login.jsp';");
+                    out.write("</script>\n");
+                    return;
+                } else {
+                    String content
+                            = "<html>\n"
+                            + "<body>\n"
+                            + "<h1>Nhắc mật khẩu</h1>\n"
+                            + "<p>Mật khẩu tài khoản <b>"+email_t+"</b> là: " + pass +"<br/>\n"
+                            + "<p>Quý khách vui lòng dùng mật khẩu trên, truy cập vào trang của cửa hàng để mua sắm </p>"
+                            + "<p>----------------<br/><b>XƯỞNG MỘC NGUYỄN VĂN QUÝ<br/>"
+                            + "Cơ sở 1: 449/22 đường Hương Lộ 2, phường Bình Trị Đông, quận Bình Tân, TP.HCM<br/>"
+                            + "Cơ sở 2: 449/38/6 đường Hương Lộ 2, phường Bình Trị Đông, quận Bình Tân, TP.HCM<br/>"
+                            + "Điện thoại: 08.5407.0556 - Đường dây nóng: 0938.200.871</b></p>"
+                            + "</body>"
+                            + "</html>\n";
+
+                    md = new MailDAO("woodonline.store@gmail.com", "woodshop123");
+                    md.sendToPerson(email_t, "[Nhắc mật khẩu]", content);
+                    //md.sendToPerson("nguyenvanquy.woodworkshop@gmail.com", "[Liên Hệ]", "Từ: " + request.getParameter("email") + "<br/>" + request.getParameter("message"));
+
+                    out.write("<script type='text/javascript'>\n");
+                    out.write("alert('Check your mail for the password !');\n");
+                    out.write("window.location.href='../WebProj/User/login.jsp';");
+                    out.write("</script>\n");
+                    return;
+                }
+
+            } else {
+                response.sendRedirect("index.jsp");
                 return;
             }
-
-        } else {
-            response.sendRedirect("index.jsp");
-            return;
         }
+        catch(Exception e) {
+            
+        }
+        
 
     }
 

@@ -52,70 +52,77 @@ public class CommentServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException, ClassNotFoundException {
-        request.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        String action = request.getParameter("action");
-        ComResDAO crDAO = new ComResDAO();
         
-        Date date = new Date();
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-        int month = cal.get(Calendar.MONTH) + 1;
-        int day = cal.get(Calendar.DATE);
-        int year = cal.get(Calendar.YEAR);
+        try {
+            request.setCharacterEncoding("UTF-8");
+            response.setContentType("text/html;charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            String action = request.getParameter("action");
+            ComResDAO crDAO = new ComResDAO();
 
-        String cDate = String.format("%d", year) + "-" + String.format("%02d", month) + "-" + String.format("%02d", day);
+            Date date = new Date();
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(date);
+            int month = cal.get(Calendar.MONTH) + 1;
+            int day = cal.get(Calendar.DATE);
+            int year = cal.get(Calendar.YEAR);
 
-        int hour = cal.get(Calendar.HOUR_OF_DAY);
-        int minute = cal.get(Calendar.MINUTE);
-        int second = cal.get(Calendar.SECOND);
+            String cDate = String.format("%d", year) + "-" + String.format("%02d", month) + "-" + String.format("%02d", day);
 
-        String cTime = String.format("%02d", hour) + ":" + String.format("%02d", minute) + ":" + String.format("%02d", second);
-        
-        Comment cm = new Comment();
-        Response r = new Response();
-        String pid_t = request.getParameter("pid");
-        
-        if(action == null){
-            response.sendRedirect("index.jsp");
-            return;
-        }        
-        else if(action.compareTo("newcomment") == 0){
-            String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
-            boolean valid = VerifyUtils.verify(gRecaptchaResponse);
-            if (!valid) {
-                out.write("<script type='text/javascript'>\n");
-                out.write("alert('Please complete the captcha !');\n");
-                out.write("window.location.href='../WebProj/index.jsp';");
-                out.write("</script>\n");
+            int hour = cal.get(Calendar.HOUR_OF_DAY);
+            int minute = cal.get(Calendar.MINUTE);
+            int second = cal.get(Calendar.SECOND);
+
+            String cTime = String.format("%02d", hour) + ":" + String.format("%02d", minute) + ":" + String.format("%02d", second);
+
+            Comment cm = new Comment();
+            Response r = new Response();
+            String pid_t = request.getParameter("pid");
+
+            if(action == null){
+                response.sendRedirect("index.jsp");
+                return;
+            }        
+            else if(action.compareTo("newcomment") == 0){
+                String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
+                boolean valid = VerifyUtils.verify(gRecaptchaResponse);
+                if (!valid) {
+                    out.write("<script type='text/javascript'>\n");
+                    out.write("alert('Please complete the captcha !');\n");
+                    out.write("window.location.href='../WebProj/index.jsp';");
+                    out.write("</script>\n");
+                    return;
+                }
+                cm.setContent(request.getParameter("content"));
+                cm.setDate(cDate);
+                cm.setPid(request.getParameter("pid"));
+                cm.setTime(cTime);
+                cm.setUcid(Integer.parseInt(request.getParameter("ucid")));
+                crDAO.addComment(cm);
+
+                response.sendRedirect("Product/view.jsp?pid="+pid_t);
                 return;
             }
-            cm.setContent(request.getParameter("content"));
-            cm.setDate(cDate);
-            cm.setPid(request.getParameter("pid"));
-            cm.setTime(cTime);
-            cm.setUcid(Integer.parseInt(request.getParameter("ucid")));
-            crDAO.addComment(cm);
+            else if(action.compareTo("newresponse") == 0){            
+                r.setCmid(Integer.parseInt(request.getParameter("cmid")));
+                r.setContent(request.getParameter("content"));
+                r.setDate(cDate);
+                r.setTime(cTime);
+                r.setUrid(Integer.parseInt(request.getParameter("ucid")));
+                crDAO.addResponse(r);
+
+                response.sendRedirect("Product/view.jsp?pid="+pid_t);
+                return;
+            }
+            else{
+                response.sendRedirect("index.jsp");
+                return;
+            }
+        }
+        catch(Exception e) {
             
-            response.sendRedirect("Product/view.jsp?pid="+pid_t);
-            return;
         }
-        else if(action.compareTo("newresponse") == 0){            
-            r.setCmid(Integer.parseInt(request.getParameter("cmid")));
-            r.setContent(request.getParameter("content"));
-            r.setDate(cDate);
-            r.setTime(cTime);
-            r.setUrid(Integer.parseInt(request.getParameter("ucid")));
-            crDAO.addResponse(r);
-            
-            response.sendRedirect("Product/view.jsp?pid="+pid_t);
-            return;
-        }
-        else{
-            response.sendRedirect("index.jsp");
-            return;
-        }
+        
         
         
     }
