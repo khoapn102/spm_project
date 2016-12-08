@@ -248,12 +248,12 @@
                                         <br><h4 style="padding-top: 10px"><i>Vui lòng điền thông tin đăng nhập</i></h4>
                                         <%}%>
                                     </form>
-                                    <form id="formForgot"  action="#" method="post" style="display: none;">
+                                    <form id="formForgot"  action="/WebProj/MailServlet?action=forgetPassword" method="post" style="display: none;">
                                         <div class="col-md-9 login-right">
                                             <p>Vui lòng nhập địa chỉ email để chúng tôi gửi thông tin mật khẩu cho bạn<label>*</label></p>
-                                            Email: <input type="text" placeholder="Email của bạn">&nbsp;&nbsp;
-                                            <div class="register-but" style="float: left">
-                                                <input type="submit" id="submitEmail" value="Gửi lại mật khẩu" onclick="displayConfirm()">
+                                            Email: <input type="text" placeholder="Email của bạn" name="forgetEmail">&nbsp;&nbsp;
+                                            <div class="register-but" style="float: left" >
+                                                <input type="submit" id="submitEmail" value="Gửi lại mật khẩu" >
                                             </div>
                                         </div>
                                     </form>
@@ -267,9 +267,9 @@
                                         }
                                         e.preventDefault();
                                     });
-                                    function displayConfirm() {
-                                        alert('Vui lòng kiểm tra email để nhận thông tin mật khẩu!');
-                                    }
+//                                    function displayConfirm() {
+//                                        alert('Vui lòng kiểm tra email để nhận thông tin mật khẩu!');
+//                                    }
 
                                 </script>
                                 <div class="clearfix"> </div>

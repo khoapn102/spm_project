@@ -120,15 +120,9 @@ public class UserDAO {
         pstmt.setString(1, email);
         ResultSet rs = pstmt.executeQuery();
         
-        if(!rs.next()) {
-            pstmt.close();
-            rs.close();
-            return null;
-        }
+        if(!rs.next()) return null;
         
-        pstmt.close();
-        rs.close();
-        return rs.getString("password");
+        else return rs.getString("password");
         
     }
     public List<String> getAllEmail() throws SQLException, ClassNotFoundException {
