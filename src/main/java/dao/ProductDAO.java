@@ -251,6 +251,8 @@ public class ProductDAO {
     }
     
     public List<Product> getAllSearchedProducts(String[] categories, String discount, String price) throws SQLException, ClassNotFoundException {
+        
+        System.out.println("Searching products now");
         List<Product> prod = new ArrayList<Product>();
         
         String query = "select * from product where";
@@ -363,7 +365,7 @@ public class ProductDAO {
         
         query += ";";
         
-//        System.out.println(query);
+        System.out.println(query);
         
 //        String query = "select * from product where price >= '" + low + "' and price <= '" + up + "';";
         PreparedStatement pstmt = conn.prepareStatement(query);

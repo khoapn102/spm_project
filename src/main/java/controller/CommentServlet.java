@@ -86,10 +86,11 @@ public class CommentServlet extends HttpServlet {
             else if(action.compareTo("newcomment") == 0){
                 String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
                 boolean valid = VerifyUtils.verify(gRecaptchaResponse);
+                
                 if (!valid) {
                     out.write("<script type='text/javascript'>\n");
                     out.write("alert('Please complete the captcha !');\n");
-                    out.write("window.location.href='../WebProj/index.jsp';");
+                    out.write("window.location.href='Product/view.jsp?pid=" + pid_t + "';");
                     out.write("</script>\n");
                     return;
                 }
@@ -100,7 +101,8 @@ public class CommentServlet extends HttpServlet {
                 cm.setUcid(Integer.parseInt(request.getParameter("ucid")));
                 crDAO.addComment(cm);
 
-                response.sendRedirect("Product/view.jsp?pid="+pid_t);
+                String url = "Product/view.jsp?pid="+ pid_t;
+                response.sendRedirect(url);
                 return;
             }
             else if(action.compareTo("newresponse") == 0){            

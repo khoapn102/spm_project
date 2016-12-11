@@ -102,7 +102,7 @@ public class ProductServlet extends HttpServlet {
                     if (keyWord != null && !keyWord.equals("Tìm kiếm")) {
                         productList = pdao.getSearchProduct(keyWord);
                     }
-                    else if(price != null && categories != null && discount != null) {
+                    else if(price != null || categories != null || discount != null) {
                         productList = pdao.getAllSearchedProducts(categories, discount, price);
                     }
                 }
