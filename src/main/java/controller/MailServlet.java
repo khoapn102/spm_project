@@ -130,15 +130,16 @@ public class MailServlet extends HttpServlet {
             } else if (action.compareTo("forgetPassword") == 0) {
                 UserDAO uDAO = new UserDAO();
                 String email_t = request.getParameter("forgetEmail");
-                String pass = PasswordProtection.decrypt(uDAO.getPasswordOneUserByEmail(email_t));
+                String pass = uDAO.getPasswordOneUserByEmail(email_t);
 
                 if (pass == null) {
                     out.write("<script type='text/javascript'>\n");
-                    out.write("alert('Email does not exit or Email is invalid !');\n");
+                    out.write("alert('Không tìm thấy email trong CSDL!');\n");
                     out.write("window.location.href='../WebProj/User/login.jsp';");
                     out.write("</script>\n");
                     return;
                 } else {
+                    pass = PasswordProtection.decrypt(pass);
                     String content
                             = "<html>\n"
                             + "<body>\n"
@@ -157,7 +158,7 @@ public class MailServlet extends HttpServlet {
                     //md.sendToPerson("nguyenvanquy.woodworkshop@gmail.com", "[Liên Hệ]", "Từ: " + request.getParameter("email") + "<br/>" + request.getParameter("message"));
 
                     out.write("<script type='text/javascript'>\n");
-                    out.write("alert('Check your mail for the password !');\n");
+                    out.write("alert('Vui lòng kiểm tra email để lất password');\n");
                     out.write("window.location.href='../WebProj/User/login.jsp';");
                     out.write("</script>\n");
                     return;
