@@ -387,9 +387,13 @@
                                             </ul>
 
                                             <input type="submit" value="Thêm vào giỏ" title="">
+                                            
                                         </form>
-
-
+                                         
+                                        <form method="post" action="../ProductServlet?action=search&rpid=<%=x.getPid()%>">
+                                            <input type="submit" value="Tìm sản phẩm tương tự" title="">
+                                        </form>
+                                            
                                         <%String url2 = "../controller.WishListServlet?action=add&pid=" + x.getPid();%>
                                         <div class="col-md-4 login-left">
                                             <form method="post" action=<%=url2%>>
