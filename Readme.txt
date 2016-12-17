@@ -8,16 +8,17 @@ mysql -u root -p onlinestore < DB_onlinestore.sql
 
 ------------------- *** -------------------
 
+Note: This is a Maven-based project, so make sure you install Maven first to run the code properly
+
 PART 2: Import the source code of Project
-_ Run the NetBeanIDE
-_ Select meny File\Open...
+_ Run the NetBeans IDE
+_ Select menu File\Open...
 _ Link to the folder 'WebProj' of Project source code
-_ Then click OK. NetBeanIDE will automatically add the project source code
-_ Edit the username and password of MySQL at line 18-19
+_ Then click OK. NetBeans IDE will automatically add the project source code
+_ Edit the username and password of MySQL at line 29-30 in DBConnection.java in dbconnection package
+_ Right-click on the Project name (WebProj) select Clean and Build option.
 _ Right-click on the Project name (WebProj) select Run option.
 _ The Project will run on the default browser
-
-This is a test
 
 
 

@@ -1,0 +1,1 @@
+@(src/main/webapp/js/easyResponsiveTabs.js 2jsXp

@@ -1,0 +1,1 @@
+>'src/main/webapp/js/cbpViewModeSwitch.js 2jsX'

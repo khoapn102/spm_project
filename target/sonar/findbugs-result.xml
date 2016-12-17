@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BugCollection version="3.0.1" sequence="0" timestamp="1481523577655" analysisTimestamp="1481527981139" release="">
+  <Project>
+    <Jar>C:\Users\Triet Le\SPM\spm_project\target\classes\controller\CommentServlet.class</Jar>
+    <Jar>C:\Users\Triet Le\SPM\spm_project\target\classes\controller\FileUpload.class</Jar>
+    <Jar>C:\Users\Triet Le\SPM\spm_project\target\classes\controller\MailServlet.class</Jar>
+    <Jar>C:\Users\Triet Le\SPM\spm_project\target\classes\controller\OrderServlet.class</Jar>
+    <Jar>C:\Users\Triet Le\SPM\spm_project\target\classes\controller\PasswordProtection.class</Jar>
+    <Jar>C:\Users\Triet Le\SPM\spm_project\target\classes\controller\ProductServlet.class</Jar>
+    <Jar>C:\Users\Triet Le\SPM\spm_project\target\classes\controller\SubscriberServlet.class</Jar>
+    <Jar>C:\Users\Triet Le\SPM\spm_project\target\classes\controller\UserServlet.class</Jar>
+    <Jar>C:\Users\Triet Le\SPM\spm_project\target\classes\controller\VerifyUtils.class</Jar>
+    <Jar>C:\Users\Triet Le\SPM\spm_project\target\classes\controller\WishListServlet.class</Jar>
+    <Jar>C:\Users\Triet Le\SPM\spm_project\target\classes\dao\ComResDAO.class</Jar>
+    <Jar>C:\Users\Triet Le\SPM\spm_project\target\classes\dao\MailDAO.class</Jar>
+    <Jar>C:\Users\Triet Le\SPM\spm_project\target\classes\dao\OrderDAO.class</Jar>
+    <Jar>C:\Users\Triet Le\SPM\spm_project\target\classes\dao\ProductDAO.class</Jar>
+    <Jar>C:\Users\Triet Le\SPM\spm_project\target\classes\dao\SubscriberDAO.class</Jar>
+    <Jar>C:\Users\Triet Le\SPM\spm_project\target\classes\dao\UserDAO.class</Jar>
+    <Jar>C:\Users\Triet Le\SPM\spm_project\target\classes\dao\WishListDAO.class</Jar>
+    <Jar>C:\Users\Triet Le\SPM\spm_project\target\classes\dbconnection\DbConnection.class</Jar>
+    <Jar>C:\Users\Triet Le\SPM\spm_project\target\classes\model\Comment.class</Jar>
+    <Jar>C:\Users\Triet Le\SPM\spm_project\target\classes\model\Mail.class</Jar>
+    <Jar>C:\Users\Triet Le\SPM\spm_project\target\classes\model\Order.class</Jar>
+    <Jar>C:\Users\Triet Le\SPM\spm_project\target\classes\model\Product.class</Jar>
+    <Jar>C:\Users\Triet Le\SPM\spm_project\target\classes\model\Response.class</Jar>
+    <Jar>C:\Users\Triet Le\SPM\spm_project\target\classes\model\Subscriber.class</Jar>
+    <Jar>C:\Users\Triet Le\SPM\spm_project\target\classes\model\User.class</Jar>
+    <Jar>C:\Users\Triet Le\SPM\spm_project\target\classes\model\WishList.class</Jar>
+    <Jar>C:\Users\Triet Le\SPM\spm_project\target\classes\shoppingcart\ShoppingServlet.class</Jar>
+    <AuxClasspathEntry>C:\Users\Triet Le\SPM\spm_project\target\classes</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Triet Le\.m2\repository\javax\mail\mail\1.4\mail-1.4.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Triet Le\.m2\repository\javax\activation\activation\1.1\activation-1.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Triet Le\.m2\repository\mysql\mysql-connector-java\5.1.40\mysql-connector-java-5.1.40.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Triet Le\.m2\repository\javax\servlet\jstl\1.2\jstl-1.2.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Triet Le\.m2\repository\javax\javaee-web-api\7.0\javaee-web-api-7.0.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Triet Le\.m2\repository\org\glassfish\javax.json\1.0.2\javax.json-1.0.2.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Triet Le\.m2\repository\net\tanesha\recaptcha4j\recaptcha4j\0.0.7\recaptcha4j-0.0.7.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Triet Le\.m2\repository\com\sun\xml\security\xml-security-impl\1.0\xml-security-impl-1.0.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Triet Le\SPM\spm_project\target\sonar\findbugs\annotations.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Triet Le\SPM\spm_project\target\sonar\findbugs\jsr305.jar</AuxClasspathEntry>
+    <WrkDir>C:\Users\Triet Le\SPM\spm_project\target\sonar</WrkDir>
+  </Project>
+  <Errors errors="0" missingClasses="0"></Errors>
+  <FindBugsSummary timestamp="Mon, 12 Dec 2016 13:19:37 +0700" total_classes="27" referenced_classes="103" total_bugs="0" total_size="2407" num_packages="5" java_version="1.8.0_92" vm_version="25.92-b14" cpu_seconds="31.95" clock_seconds="7.51" peak_mbytes="891.74" alloc_mbytes="1797.50" gc_seconds="0.30">
+    <FileStats path="controller/CommentServlet.java" bugCount="0" size="75"/>
+    <FileStats path="controller/FileUpload.java" bugCount="0" size="39"/>
+    <FileStats path="controller/MailServlet.java" bugCount="0" size="97"/>
+    <FileStats path="controller/OrderServlet.java" bugCount="0" size="53"/>
+    <FileStats path="controller/PasswordProtection.java" bugCount="0" size="16"/>
+    <FileStats path="controller/ProductServlet.java" bugCount="0" size="135"/>
+    <FileStats path="controller/SubscriberServlet.java" bugCount="0" size="52"/>
+    <FileStats path="controller/UserServlet.java" bugCount="0" size="165"/>
+    <FileStats path="controller/VerifyUtils.java" bugCount="0" size="32"/>
+    <FileStats path="controller/WishListServlet.java" bugCount="0" size="103"/>
+    <FileStats path="dao/ComResDAO.java" bugCount="0" size="95"/>
+    <FileStats path="dao/MailDAO.java" bugCount="0" size="65"/>
+    <FileStats path="dao/OrderDAO.java" bugCount="0" size="121"/>
+    <FileStats path="dao/ProductDAO.java" bugCount="0" size="404"/>
+    <FileStats path="dao/SubscriberDAO.java" bugCount="0" size="35"/>
+    <FileStats path="dao/UserDAO.java" bugCount="0" size="244"/>
+    <FileStats path="dao/WishListDAO.java" bugCount="0" size="80"/>
+    <FileStats path="dbconnection/DbConnection.java" bugCount="0" size="23"/>
+    <FileStats path="model/Comment.java" bugCount="0" size="41"/>
+    <FileStats path="model/Mail.java" bugCount="0" size="33"/>
+    <FileStats path="model/Order.java" bugCount="0" size="35"/>
+    <FileStats path="model/Product.java" bugCount="0" size="65"/>
+    <FileStats path="model/Response.java" bugCount="0" size="41"/>
+    <FileStats path="model/Subscriber.java" bugCount="0" size="9"/>
+    <FileStats path="model/User.java" bugCount="0" size="65"/>
+    <FileStats path="model/WishList.java" bugCount="0" size="27"/>
+    <FileStats path="shoppingcart/ShoppingServlet.java" bugCount="0" size="257"/>
+    <PackageStats package="controller" total_bugs="0" total_types="10" total_size="767">
+      <ClassStats class="controller.CommentServlet" sourceFile="CommentServlet.java" interface="false" size="75" bugs="0"/>
+      <ClassStats class="controller.FileUpload" sourceFile="FileUpload.java" interface="false" size="39" bugs="0"/>
+      <ClassStats class="controller.MailServlet" sourceFile="MailServlet.java" interface="false" size="97" bugs="0"/>
+      <ClassStats class="controller.OrderServlet" sourceFile="OrderServlet.java" interface="false" size="53" bugs="0"/>
+      <ClassStats class="controller.PasswordProtection" sourceFile="PasswordProtection.java" interface="false" size="16" bugs="0"/>
+      <ClassStats class="controller.ProductServlet" sourceFile="ProductServlet.java" interface="false" size="135" bugs="0"/>
+      <ClassStats class="controller.SubscriberServlet" sourceFile="SubscriberServlet.java" interface="false" size="52" bugs="0"/>
+      <ClassStats class="controller.UserServlet" sourceFile="UserServlet.java" interface="false" size="165" bugs="0"/>
+      <ClassStats class="controller.VerifyUtils" sourceFile="VerifyUtils.java" interface="false" size="32" bugs="0"/>
+      <ClassStats class="controller.WishListServlet" sourceFile="WishListServlet.java" interface="false" size="103" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="dao" total_bugs="0" total_types="7" total_size="1044">
+      <ClassStats class="dao.ComResDAO" sourceFile="ComResDAO.java" interface="false" size="95" bugs="0"/>
+      <ClassStats class="dao.MailDAO" sourceFile="MailDAO.java" interface="false" size="65" bugs="0"/>
+      <ClassStats class="dao.OrderDAO" sourceFile="OrderDAO.java" interface="false" size="121" bugs="0"/>
+      <ClassStats class="dao.ProductDAO" sourceFile="ProductDAO.java" interface="false" size="404" bugs="0"/>
+      <ClassStats class="dao.SubscriberDAO" sourceFile="SubscriberDAO.java" interface="false" size="35" bugs="0"/>
+      <ClassStats class="dao.UserDAO" sourceFile="UserDAO.java" interface="false" size="244" bugs="0"/>
+      <ClassStats class="dao.WishListDAO" sourceFile="WishListDAO.java" interface="false" size="80" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="dbconnection" total_bugs="0" total_types="1" total_size="23">
+      <ClassStats class="dbconnection.DbConnection" sourceFile="DbConnection.java" interface="false" size="23" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="model" total_bugs="0" total_types="8" total_size="316">
+      <ClassStats class="model.Comment" sourceFile="Comment.java" interface="false" size="41" bugs="0"/>
+      <ClassStats class="model.Mail" sourceFile="Mail.java" interface="false" size="33" bugs="0"/>
+      <ClassStats class="model.Order" sourceFile="Order.java" interface="false" size="35" bugs="0"/>
+      <ClassStats class="model.Product" sourceFile="Product.java" interface="false" size="65" bugs="0"/>
+      <ClassStats class="model.Response" sourceFile="Response.java" interface="false" size="41" bugs="0"/>
+      <ClassStats class="model.Subscriber" sourceFile="Subscriber.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="model.User" sourceFile="User.java" interface="false" size="65" bugs="0"/>
+      <ClassStats class="model.WishList" sourceFile="WishList.java" interface="false" size="27" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="shoppingcart" total_bugs="0" total_types="1" total_size="257">
+      <ClassStats class="shoppingcart.ShoppingServlet" sourceFile="ShoppingServlet.java" interface="false" size="257" bugs="0"/>
+    </PackageStats>
+    <FindBugsProfile>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="537" invocations="662" avgMicrosecondsPerInvocation="811" maxMicrosecondsPerInvocation="266441" standardDeviationMircosecondsPerInvocation="10386"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="465" invocations="665" avgMicrosecondsPerInvocation="700" maxMicrosecondsPerInvocation="21494" standardDeviationMircosecondsPerInvocation="1835"/>
+      <ClassProfile name="com.h3xstream.findsecbugs.taintanalysis.TaintDataflowEngine" totalMilliseconds="250" invocations="229" avgMicrosecondsPerInvocation="1095" maxMicrosecondsPerInvocation="24770" standardDeviationMircosecondsPerInvocation="3051"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory" totalMilliseconds="236" invocations="229" avgMicrosecondsPerInvocation="1032" maxMicrosecondsPerInvocation="28619" standardDeviationMircosecondsPerInvocation="2944"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.CFGFactory" totalMilliseconds="226" invocations="229" avgMicrosecondsPerInvocation="989" maxMicrosecondsPerInvocation="93937" standardDeviationMircosecondsPerInvocation="6366"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory" totalMilliseconds="221" invocations="240" avgMicrosecondsPerInvocation="924" maxMicrosecondsPerInvocation="25037" standardDeviationMircosecondsPerInvocation="2697"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory" totalMilliseconds="206" invocations="240" avgMicrosecondsPerInvocation="859" maxMicrosecondsPerInvocation="31754" standardDeviationMircosecondsPerInvocation="2753"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.UnconditionalValueDerefDataflowFactory" totalMilliseconds="204" invocations="229" avgMicrosecondsPerInvocation="891" maxMicrosecondsPerInvocation="29068" standardDeviationMircosecondsPerInvocation="2920"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="195" invocations="103" avgMicrosecondsPerInvocation="1901" maxMicrosecondsPerInvocation="32461" standardDeviationMircosecondsPerInvocation="4305"/>
+      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="184" invocations="458" avgMicrosecondsPerInvocation="402" maxMicrosecondsPerInvocation="10399" standardDeviationMircosecondsPerInvocation="903"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindNoSideEffectMethods" totalMilliseconds="177" invocations="103" avgMicrosecondsPerInvocation="1725" maxMicrosecondsPerInvocation="25095" standardDeviationMircosecondsPerInvocation="3939"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.NullDerefAndRedundantComparisonFinder" totalMilliseconds="163" invocations="229" avgMicrosecondsPerInvocation="712" maxMicrosecondsPerInvocation="14939" standardDeviationMircosecondsPerInvocation="1721"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.MethodGenFactory" totalMilliseconds="146" invocations="229" avgMicrosecondsPerInvocation="639" maxMicrosecondsPerInvocation="108298" standardDeviationMircosecondsPerInvocation="7145"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindRefComparison$SpecialTypeAnalysis" totalMilliseconds="112" invocations="127" avgMicrosecondsPerInvocation="889" maxMicrosecondsPerInvocation="18922" standardDeviationMircosecondsPerInvocation="2083"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.obl.ObligationAnalysis" totalMilliseconds="86" invocations="72" avgMicrosecondsPerInvocation="1199" maxMicrosecondsPerInvocation="14741" standardDeviationMircosecondsPerInvocation="2155"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindOpenStream" totalMilliseconds="77" invocations="27" avgMicrosecondsPerInvocation="2875" maxMicrosecondsPerInvocation="15766" standardDeviationMircosecondsPerInvocation="4376"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers" totalMilliseconds="75" invocations="103" avgMicrosecondsPerInvocation="735" maxMicrosecondsPerInvocation="29270" standardDeviationMircosecondsPerInvocation="3034"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.OverridingEqualsNotSymmetrical" totalMilliseconds="68" invocations="103" avgMicrosecondsPerInvocation="665" maxMicrosecondsPerInvocation="38794" standardDeviationMircosecondsPerInvocation="3822"/>
+      <ClassProfile name="com.h3xstream.findsecbugs.TrustBoundaryViolationDetector" totalMilliseconds="67" invocations="27" avgMicrosecondsPerInvocation="2514" maxMicrosecondsPerInvocation="36030" standardDeviationMircosecondsPerInvocation="6795"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.DefaultEncodingDetector" totalMilliseconds="61" invocations="27" avgMicrosecondsPerInvocation="2277" maxMicrosecondsPerInvocation="33366" standardDeviationMircosecondsPerInvocation="6270"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine" totalMilliseconds="61" invocations="181" avgMicrosecondsPerInvocation="338" maxMicrosecondsPerInvocation="20883" standardDeviationMircosecondsPerInvocation="1582"/>
+      <ClassProfile name="com.h3xstream.findsecbugs.file.PathTraversalDetector" totalMilliseconds="60" invocations="27" avgMicrosecondsPerInvocation="2247" maxMicrosecondsPerInvocation="26610" standardDeviationMircosecondsPerInvocation="5134"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.BuildObligationPolicyDatabase" totalMilliseconds="53" invocations="103" avgMicrosecondsPerInvocation="514" maxMicrosecondsPerInvocation="17057" standardDeviationMircosecondsPerInvocation="1749"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.LockDataflowFactory" totalMilliseconds="50" invocations="61" avgMicrosecondsPerInvocation="834" maxMicrosecondsPerInvocation="15246" standardDeviationMircosecondsPerInvocation="2110"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.BuildStringPassthruGraph" totalMilliseconds="50" invocations="103" avgMicrosecondsPerInvocation="486" maxMicrosecondsPerInvocation="10834" standardDeviationMircosecondsPerInvocation="1277"/>
+      <ClassProfile name="com.h3xstream.findsecbugs.injection.sql.SqlInjectionDetector" totalMilliseconds="49" invocations="27" avgMicrosecondsPerInvocation="1834" maxMicrosecondsPerInvocation="20895" standardDeviationMircosecondsPerInvocation="4112"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FunctionsThatMightBeMistakenForProcedures" totalMilliseconds="49" invocations="103" avgMicrosecondsPerInvocation="477" maxMicrosecondsPerInvocation="16809" standardDeviationMircosecondsPerInvocation="1731"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.StreamResourceTracker" totalMilliseconds="48" invocations="88" avgMicrosecondsPerInvocation="547" maxMicrosecondsPerInvocation="4249" standardDeviationMircosecondsPerInvocation="650"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ConstantDataflowFactory" totalMilliseconds="47" invocations="229" avgMicrosecondsPerInvocation="205" maxMicrosecondsPerInvocation="6616" standardDeviationMircosecondsPerInvocation="614"/>
+      <ClassProfile name="edu.umd.cs.findbugs.util.TopologicalSort" totalMilliseconds="43" invocations="627" avgMicrosecondsPerInvocation="69" maxMicrosecondsPerInvocation="1496" standardDeviationMircosecondsPerInvocation="137"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindDeadLocalStores" totalMilliseconds="41" invocations="27" avgMicrosecondsPerInvocation="1530" maxMicrosecondsPerInvocation="13885" standardDeviationMircosecondsPerInvocation="2628"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FormatStringChecker" totalMilliseconds="39" invocations="27" avgMicrosecondsPerInvocation="1471" maxMicrosecondsPerInvocation="27743" standardDeviationMircosecondsPerInvocation="5186"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.LoadOfKnownNullValue" totalMilliseconds="38" invocations="27" avgMicrosecondsPerInvocation="1442" maxMicrosecondsPerInvocation="7563" standardDeviationMircosecondsPerInvocation="1660"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindUnsatisfiedObligation" totalMilliseconds="37" invocations="27" avgMicrosecondsPerInvocation="1383" maxMicrosecondsPerInvocation="20643" standardDeviationMircosecondsPerInvocation="3954"/>
+      <ClassProfile name="com.h3xstream.findsecbugs.injection.redirect.UnvalidatedRedirectDetector" totalMilliseconds="36" invocations="27" avgMicrosecondsPerInvocation="1334" maxMicrosecondsPerInvocation="6991" standardDeviationMircosecondsPerInvocation="1815"/>
+      <ClassProfile name="com.h3xstream.findsecbugs.injection.ldap.LdapInjectionDetector" totalMilliseconds="33" invocations="27" avgMicrosecondsPerInvocation="1249" maxMicrosecondsPerInvocation="11902" standardDeviationMircosecondsPerInvocation="2326"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueRangeAnalysisFactory" totalMilliseconds="33" invocations="229" avgMicrosecondsPerInvocation="145" maxMicrosecondsPerInvocation="13718" standardDeviationMircosecondsPerInvocation="994"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.CalledMethods" totalMilliseconds="33" invocations="103" avgMicrosecondsPerInvocation="322" maxMicrosecondsPerInvocation="3899" standardDeviationMircosecondsPerInvocation="582"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.LiveLocalStoreDataflowFactory" totalMilliseconds="32" invocations="229" avgMicrosecondsPerInvocation="142" maxMicrosecondsPerInvocation="6468" standardDeviationMircosecondsPerInvocation="499"/>
+      <ClassProfile name="com.h3xstream.findsecbugs.injection.custom.CustomInjectionDetector" totalMilliseconds="31" invocations="27" avgMicrosecondsPerInvocation="1165" maxMicrosecondsPerInvocation="10101" standardDeviationMircosecondsPerInvocation="2035"/>
+      <ClassProfile name="com.h3xstream.findsecbugs.injection.command.CommandInjectionDetector" totalMilliseconds="29" invocations="27" avgMicrosecondsPerInvocation="1107" maxMicrosecondsPerInvocation="6320" standardDeviationMircosecondsPerInvocation="1628"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindInconsistentSync2" totalMilliseconds="29" invocations="27" avgMicrosecondsPerInvocation="1095" maxMicrosecondsPerInvocation="4778" standardDeviationMircosecondsPerInvocation="1102"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.StaticCalendarDetector" totalMilliseconds="28" invocations="27" avgMicrosecondsPerInvocation="1042" maxMicrosecondsPerInvocation="21644" standardDeviationMircosecondsPerInvocation="4053"/>
+      <ClassProfile name="com.h3xstream.findsecbugs.xpath.XPathInjectionDetector" totalMilliseconds="28" invocations="27" avgMicrosecondsPerInvocation="1038" maxMicrosecondsPerInvocation="6281" standardDeviationMircosecondsPerInvocation="1335"/>
+    </FindBugsProfile>
+  </FindBugsSummary>
+  <ClassFeatures></ClassFeatures>
+  <History></History>
+</BugCollection>

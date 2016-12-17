@@ -1,0 +1,1 @@
+=src/main/webapp/js/backtotop.js 2jsX

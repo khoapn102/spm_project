@@ -1,0 +1,1 @@
+G$src/main/webapp/js/simpleCart.min.js 2jsX4

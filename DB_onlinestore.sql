@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : MySQL
+Source Server         : Triet
 Source Server Version : 50623
 Source Host           : localhost:3306
 Source Database       : onlinestore
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50623
 File Encoding         : 65001
 
-Date: 2015-12-09 15:34:55
+Date: 2016-12-09 10:28:58
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -216,10 +216,10 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('111', '123456', 'Software Solution', 'HKT', '01-01-1990', '01212188999', '1', 'image/user/cool.jpg', '126 Nguyễn Thị Minh Khai, P. 16, Q. 3, HCMC', 'khoaphan@gmail.com');
-INSERT INTO `user` VALUES ('123', 'b', 'Triet', 'Le', '1996-02-03', '123456798', '1', 'image/user/hung.jpg', 'b', 'b');
-INSERT INTO `user` VALUES ('159', '1', 'Hưng', 'Phan Ngọc', '11-08-1995', '01212120462', '0', 'image/user/coffee.jpg', '123 Hoàng Văn Thụ, phường 4, quận Tân Bình', 'phithangcung@gmail.com');
-INSERT INTO `user` VALUES ('161', '123456', 'Khoa', 'Phan', '1-1-1990', '01203073975', '0', 'image/user/mundo.jpg', '321 Lê Quý Đôn, P. 6, Q. 3, HCMC', 'khoaphan2@gmail.com');
+INSERT INTO `user` VALUES ('111', 'MTIzNDU2', 'Software Solution', 'HKT', '01-01-1990', '01212188999', '1', 'image/user/cool.jpg', '126 Nguyễn Thị Minh Khai, P. 16, Q. 3, HCMC', 'khoaphan@gmail.com');
+INSERT INTO `user` VALUES ('123', 'Yg==', 'Triet', 'Le', '1996-02-03', '123456798', '1', 'image/user/hung.jpg', 'b', 'trietle95@gmail.com');
+INSERT INTO `user` VALUES ('159', 'MQ==', 'Hưng', 'Phan Ngọc', '11-08-1995', '01212120462', '0', 'image/user/coffee.jpg', '123 Hoàng Văn Thụ, phường 4, quận Tân Bình', 'phithangcung@gmail.com');
+INSERT INTO `user` VALUES ('161', 'MTIzNDU2', 'Khoa', 'Phan', '1-1-1990', '01203073975', '0', 'image/user/mundo.jpg', '321 Lê Quý Đôn, P. 6, Q. 3, HCMC', 'khoaphan2@gmail.com');
 
 -- ----------------------------
 -- Table structure for wishlist
